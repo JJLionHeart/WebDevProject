@@ -1,12 +1,13 @@
 body {
-    background-color: #BEDE8D;
-    color: #3A393E;
+    background-color: #ECEBF3;
+    color: #0B0242;
+    font-family: Sans-Serif;
 }
 
 fieldset{
     border: 2px dashed #dddddd;
-    margin: 20px;
-    padding: 20px;
+    margin: 0px auto;
+    
 }
 
 a:link, a:visited {
@@ -17,12 +18,22 @@ a:hover, a:active {
     color: #8A76B9;
 }
 
+div.rootContainer {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
 div.header {
-    background: #D89248;
-    color: #3A393E;
+    background: #BAAEFF;
+    color: #1D0C88;
     font-weight: bold;
     display:table;
     width: 100%;
+    margin: 0px auto;
+    text-align: center;
 }
 
 div.register {
@@ -31,7 +42,8 @@ div.register {
 
 div.login {
     width: 20%;
-    margin: 0 auto;
+    margin: 0px auto;
+    color: #0B4F00;
 }
 
 span.header {
@@ -44,7 +56,7 @@ ul#menu{
     list-style: none;
     margin: 0;
     padding: 0;
-    background-color: ##BEDE8D;
+    background-color: #BEDE8D;
 }
 ul#menu li{
     float: left;
@@ -65,3 +77,7 @@ ul#menu li:hover, ul#menu li.selected{
     cursor: pointer;
 }
 
+input[type="text"].loginUser, input[type="password"].loginPassword{
+	text-align: center;
+	color: #0B4F00;
+}
