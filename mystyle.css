@@ -1,0 +1,97 @@
+body {
+    background-color: #BEDE8D;
+    color: #3A393E;
+}
+
+fieldset{
+    border: 2px dashed #dddddd;
+    margin: 20px;
+    padding: 20px;
+}
+
+a:link, a:visited {
+    color: #22C500;
+}
+
+a:hover, a:active {
+    color: #28E700;
+}
+
+div.header {
+    background: gray;
+    color: black;
+    font-weight: bold;
+    display:table;
+    width: 100%;
+}
+
+div.register {
+    text-align: center
+}
+
+div.login {
+    width: 20%;
+    margin: 0 auto;
+}
+
+span.header {
+    display:table-cell;
+    vertical-align: middle;
+}
+
+input.login {
+    color: blue;
+}
+
+div.CommentBox {
+    text-align: left;
+    border: 1px solid black;
+    height: 400px;
+    width: 800px;
+    overflow: auto;
+}
+
+div.SingleComment {
+    text-align: left;
+    border: 1px solid black;
+    height: 40px;
+    width: 800px;
+    
+}
+
+.friendRequest:hover {
+    color: blue;
+}
+
+table.searchResults {
+    border: 0px;
+}
+
+ul#menu{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #CCC;
+}
+ul#menu li{
+    float: left;
+    padding: 20px;
+}
+
+ul#menu{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #CCC;
+    overflow: hidden;
+}
+
+ul#menu li:hover, ul#menu li.selected{
+    background-color: #999;
+    color: white;
+    cursor: pointer;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
