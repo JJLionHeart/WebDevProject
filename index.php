@@ -4,6 +4,10 @@
          <link rel="stylesheet" type="text/css" href="mystyle.css"/>
     </head>
     <body>
-        <center><h1>Hello world!</h1></center>
+        <div class="header">
+        <span class="header">
+            <center> Web page title goes here </center>
+        </span>
+        </div>
     </body>
 </html>
