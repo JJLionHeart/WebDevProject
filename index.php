@@ -7,7 +7,8 @@
     
     $pg_conn = pg_connect(connection_string());
 
-    $result = pg_query($pg_conn, "CREATE TABLE Users(id varchar(10), name varchar(10))");
+    $result = pg_query($pg_conn, "INSERT INTO Users(id, name) VALUES('aa', 'wea')");
+    
     
 ?>
 <html>
