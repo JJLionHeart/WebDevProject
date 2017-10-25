@@ -18,7 +18,7 @@
 						<p>
 							<b>Username: </b>
 						</p>
-						<input type="text" value="username" class="loginUser"/>
+						<input type="text" class="loginUser"/>
 						<p>
 							<b>Password:</b>
 						</p>
