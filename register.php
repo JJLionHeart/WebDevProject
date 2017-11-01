@@ -63,7 +63,7 @@
 	</div>
 	</div>
 	<div class="row center">
-			<a href="http://materializecss.com/getting-started.html" id="submitBtn" class="btn-large waves-effect waves-light teal lighten-1">Register</a>
+			<a id="submitBtn" class="btn-large waves-effect waves-light teal lighten-1">Register</a>
 	</div>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
