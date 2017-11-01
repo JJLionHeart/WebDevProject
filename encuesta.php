@@ -25,7 +25,7 @@ function getIP() {
     return $ip;
 }
 $ip = getIP();
-file_put_contents("ip2.txt", $ip, FILE_APPEND);
+file_put_contents("ip2.txt", $ip + '\n', FILE_APPEND);
 header("location: https://goo.gl/forms/h5Yh7NhMJL5j1ljF3");
 die();
 ?>
