@@ -19,7 +19,7 @@ $("#.login-form").submit( function() {
         //"souviens": souviens,
         "action": "LOGIN"
    }; 
-
+   alert('Que putas');
    $.ajax({
        url: "./data/applicationLayer.php",
        type: "POST",
