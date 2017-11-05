@@ -14,7 +14,7 @@
         case "LOGOUT" :
                 logoutFunction();
                 break;
-/*        case "COMMENT" :
+        case "COMMENT" :
                 sendCommentFunction();
                 break;
         case "GETCOMMENTS":
@@ -43,7 +43,7 @@
                 break;
         case "GETFRIENDLIST":
                 getFriendList();
-                break;*/
+                break;
 	}
 
 	function loginFunction()
@@ -101,10 +101,13 @@
         $firstName = $_POST["fName"];
         $lastName = $_POST["lName"];
         $email = $_POST["email"];
+        $gender = $_POST["gender"];
+        $country = $_POST["country"];
 
         $register_response = attemptRegister($uName, $uPassword,
                                              $firstName, $lastName,
-                                             $email);
+                                             $email, $gender,
+                                             $country);
         if ($register_response["MESSAGE"] == "SUCCESS") {
 			$response = array("RESULT" => "OK");
 
@@ -122,7 +125,7 @@
         $response = array("result" => "OK");
         echo json_encode($response);
     }
-/*
+
     function sendCommentFunction() {
         session_start();
         if(!isset($_SESSION['Username']) || $_SESSION['Username'] == '') {
@@ -284,5 +287,5 @@
         echo json_encode(array("RESULT" => "OK", "DATA" => $result["DATA"]));
 
         
-    }*/
+    }
 ?>

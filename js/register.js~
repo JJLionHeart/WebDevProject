@@ -87,3 +87,8 @@ function validateRegistrationForm() {
 }
 
 
+function goHome(isValid) {
+	if(isValid) {
+		window.location.replace("home.html");
+	}
+}
