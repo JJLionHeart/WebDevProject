@@ -422,6 +422,9 @@
 .deep-purple {
   background-color: #673ab7 !important;
 }
+.deep-purple2 {
+  background-color: #8A76B9 !important;
+}
 
 .deep-purple-text {
   color: #673ab7 !important;
@@ -1676,7 +1679,7 @@
 }
 
 .orange.lighten-3 {
-  background-color: #ffcc80 !important;
+  background-color: #D89248 !important;
 }
 
 .orange-text.text-lighten-3 {
