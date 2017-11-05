@@ -26,7 +26,7 @@ $(document).ready(function() {
             ContentType: "application/json",
             dataType: "json",
             success: function(dataReceived) {
-                window.location.href("home.php"); 
+                window.location = "home.php";
             },
             error: function(errorMessage) {
                 alert("error:" + errorMessage.statusText);
