@@ -34,7 +34,7 @@
 								</div>
 						</div>
 						<center>
-							<input type="submit" class="btn-large waves-effect waves-light deep-purple" value="Enter"/>
+							<input id="login" type="submit" class="btn-large waves-effect waves-light deep-purple" value="Enter"/>
 						</center>
 					</form>
 				</fieldset>
