@@ -11,7 +11,6 @@ function databaseConnection()
 function attemptLogin($userName, $userPassword)
 {
     $connection = databaseConnection();
-    echo "aaaaaaaaaaaaa;";
     if ($connection != null)
     {
         $sql = "SELECT password FROM Users WHERE username = '$userName'";
@@ -22,7 +21,7 @@ function attemptLogin($userName, $userPassword)
                 $hash = $row[0];
                 if(!password_verify($userPassword, $hash)) {
                     echo "lol nope";
-                    return array("MESSAGE"=>"406");
+                    return array("MESSAGE"=>"500");
                 } else {
                     return array("MESSAGE" => "SUCCESS");
                 }
