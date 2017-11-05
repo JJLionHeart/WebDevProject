@@ -26,8 +26,8 @@ $(document).ready(function() {
             ContentType: "application/json",
             dataType: "json",
             success: function(dataReceived) {
-                alert('hola');
-                window.location.replace("./home.php"); 
+                window.location.replace("home.php"); 
+                window.location.replace("home.php"); 
             },
             error: function(errorMessage) {
                 alert("error:" + errorMessage.statusText);
