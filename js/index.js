@@ -1,4 +1,3 @@
-$(document).ready(
 $("#.login-form").submit( function() {
     if($("#username").val() == "") {
         alert("username should not be empty");
@@ -19,7 +18,6 @@ $("#.login-form").submit( function() {
         //"souviens": souviens,
         "action": "LOGIN"
    }; 
-   alert('Que putas');
    $.ajax({
        url: "./data/applicationLayer.php",
        type: "POST",
@@ -34,4 +32,3 @@ $("#.login-form").submit( function() {
        }
    });
 });
-);
