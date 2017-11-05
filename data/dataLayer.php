@@ -15,13 +15,13 @@ function attemptLogin($userName, $userPassword)
     {
         $sql = "SELECT password FROM Users WHERE username = '$userName'";
         $result = pg_query($connection, $sql);
-        if (!pg_num_rows($result)){
+        if (pg_num_rows($result)){
             while ($row = pg_fetch_row($result))
             {
                 $hash = $row[0];
                 if(!password_verify($userPassword, $hash)) {
                     echo "lol nope";
-                    return array("MESSAGE"=>"500");
+                    return array("MESSAGE"=>"406");
                 } else {
                     return array("MESSAGE" => "SUCCESS");
                 }
@@ -33,7 +33,6 @@ function attemptLogin($userName, $userPassword)
         else
         {
             pg_close($connection);
-            echo "bai";
             return array("MESSAGE"=>"406");
         }
     }
