@@ -28,12 +28,12 @@ function attemptLogin($userName, $userPassword)
                 }
             }
 
-            $connection->close();
+            pg_close($connection);
             return $response;
         }
         else
         {
-            $connection->close();
+            pg_close($connection);
             return array("MESSAGE"=>"406");
         }
     }
@@ -82,11 +82,11 @@ function attemptRegister($uName, $uPassword, $firstName, $lastName, $email) {
 
     // Making sure that we got something as response
     if($result) {
-        $conn->close();
+        pg_close($conn);
         return array("MESSAGE"=> "SUCCESS");
     }
 
-    $conn->close();
+    pg_close($conn);
     return array("MESSAGE" => "407");
 }
 
@@ -104,11 +104,11 @@ function attemptPostcomment($id, $text, $username) {
     $result = $conn->query($sql);
 
     if(!$result) {
-        $conn->close();
+        pg_close($conn);
         return array("MESSAGE" => "407");
     }
 
-    $conn->close();
+    pg_close($conn);
     return array("MESSAGE" => "SUCCESS");
 
 }
@@ -124,7 +124,7 @@ function attemptGetComments() {
     $result = $conn->query($sql);
 
     if(!$result) {
-        $conn->close();
+        pg_close($conn);
         return array("MESSAGE" => "407");
     }
 
@@ -134,7 +134,7 @@ function attemptGetComments() {
         $newHtml = $newHtml . $temp;
     }
 
-    $conn->close();
+    pg_close($conn);
 
     return array("MESSAGE" => "SUCCESS", "DATA" => $newHtml);
 
@@ -166,7 +166,7 @@ function attemptSearch($username, $firstName, $lastName, $email) {
     $result = $conn->query($sql);
 
     if(!$result) {
-        $conn->close();
+        pg_close($conn);
         return array("MESSAGE" => "407");   
     }
 
@@ -200,7 +200,7 @@ function attemptSearch($username, $firstName, $lastName, $email) {
             }
         }
     }
-    $conn->close();
+    pg_close($conn);
     return array("MESSAGE" => "SUCCESS", "DATA" => $newHtml);
 
 }
@@ -230,7 +230,7 @@ function attemptGetProfile() {
         "country" => $row['country']);
 
     $response = array("MESSAGE" => "SUCCESS", "DATA" => json_encode($json1));
-    $conn->close();
+    pg_close($conn);
 
     return $response; 
 
@@ -269,7 +269,7 @@ function attemptGetFriendRequests() {
     }
 
     $response = array("MESSAGE" => "SUCCESS", "DATA" => $newHtml);
-    $conn->close();
+    pg_close($conn);
     return $response;
 
 
@@ -305,7 +305,7 @@ function attemptGetNumberRequests() {
     $sql = "SELECT * FROM FriendRequests WHERE person = '$current_user';";
     $result = $conn->query($sql);
 
-    $conn->close();
+    pg_close($conn);
     if(!$result) {
         return array("MESSAGE" => "407");
     }
@@ -359,7 +359,7 @@ function attemptGetFriendList() {
     $result = $conn->query($sql);
 
     if(!$result) {
-        $conn->close();
+        pg_close($conn);
         return array("MESSAGE" => "407");
     }
 
