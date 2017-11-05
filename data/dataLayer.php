@@ -11,7 +11,7 @@ function databaseConnection()
 function attemptLogin($userName, $userPassword)
 {
     $connection = databaseConnection();
-
+    echo "aaaaaaaaaaaaa;";
     if ($connection != null)
     {
         $sql = "SELECT password FROM Users WHERE username = '$userName'";
