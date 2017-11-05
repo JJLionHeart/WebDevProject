@@ -27,7 +27,7 @@ $(document).ready(function() {
             dataType: "json",
             success: function(dataReceived) {
                 alert('hola');
-                window.location = "home.php"; 
+                window.location.replace("./home.php"); 
             },
             error: function(errorMessage) {
                 alert("error:" + errorMessage.statusText);
