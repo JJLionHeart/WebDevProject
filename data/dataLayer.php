@@ -14,7 +14,7 @@ function attemptLogin($userName, $userPassword)
 
     if ($connection != null)
     {
-        $sql = "SELECT password FROM Users WHERE userName = '$userName'";
+        $sql = "SELECT password FROM Users WHERE username = '$userName'";
         $result = pg_query($connection, $sql);
         if (!pg_num_rows($result)){
             while ($row = pg_fetch_row($result))
