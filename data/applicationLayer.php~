@@ -50,8 +50,7 @@
 	{
 		$uName = $_POST["uName"];
 		$uPassword = $_POST["uPassword"];
-      
-        /*
+
         $remember = $_POST["souviens"];
 
         if($remember == "true") {
@@ -59,7 +58,6 @@
         } else {
             setcookie('remember', '', time()-10, '/');
         }
-         */
 
 		$loginResponse = attemptLogin($uName, $uPassword);
 		
