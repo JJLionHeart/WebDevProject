@@ -12,7 +12,7 @@ $(document).ready(function() {
 
         var username = $("#username").val();
         var password = $("#password").val();
-        var souviens = $("#souviens").is(":checked"); 
+        // var souviens = $("#souviens").is(":checked"); 
         var jsonToSend = {
             "uName": username,
             "uPassword": password,
@@ -32,5 +32,6 @@ $(document).ready(function() {
                 alert("error:" + errorMessage.statusText);
             }
         });
+        return false;
     });
 });
