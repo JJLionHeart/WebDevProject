@@ -34,6 +34,7 @@ function attemptLogin($userName, $userPassword)
         else
         {
             pg_close($connection);
+            echo "bai";
             return array("MESSAGE"=>"406");
         }
     }
