@@ -1,3 +1,10 @@
+<?php
+    session_start();
+        if(isset($_SESSION['Username']) || $_SESSION['Username'] != '') {
+            header("Location: home.php");
+            die();
+        }
+?>
 <html>
 	<head>
 		<title> Web project </title>
