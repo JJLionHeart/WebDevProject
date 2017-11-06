@@ -16,7 +16,8 @@
 	<!-- CSS  -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-	<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+
 </head>
 
 <body>
@@ -27,7 +28,7 @@
         <li><a>New Task</a></li>
         <li><a>Agenda</a></li>
         <li><a>Calendar</a></li>
-        <li><a>Logout</a></li>
+        <li id = "logout"><a>Logout</a></li>
         </ul>
     </div>
 </nav>
@@ -53,6 +54,7 @@
 			
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
+	<script type="text/javascript" src="js/home.js"></script>
 </body>
 
 </html>
