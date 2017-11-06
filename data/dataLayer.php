@@ -20,10 +20,9 @@ function attemptLogin($userName, $userPassword)
             {
                 $hash = $row[0];
                 if(!password_verify($userPassword, $hash)) {
-                    echo "lol nope";
                     return array("MESSAGE"=>"406");
                 } else {
-                    return array("MESSAGE" => "SUCCESS");
+                    return array("MESSAGE" => "SUCCESS", "username" => $userName);
                 }
             }
 
