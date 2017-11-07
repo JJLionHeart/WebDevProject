@@ -2,7 +2,7 @@
 
 function databaseConnection()
 {
-    extract(parse_url($_ENV["DATABASE_URL"]));
+    extract(parse_url(getenv("DATABASE_URL")));
     $pg_string =  "user=$user password=$pass host=$host dbname=" . substr($path, 1);
     $pg_conn = pg_connect($pg_string);
     return $pg_conn;
@@ -96,7 +96,8 @@ function attemptGetTasks() {
 
     # Get the username out of this session.
     $username = $_SESSION['Username'];
-    $sql = "SELECT content, deadline FROM Comments WHERE username = '$username';";
+    $sql = "SELECT content, deadline FROM Tasks WHERE username = '$username';";
+
 
     $result = pg_query($conn, $sql);
 
@@ -106,37 +107,65 @@ function attemptGetTasks() {
     }
 
     # Prepare a return value for the function.
-    $ret_value = array("MESSAGE" => "SUCCESS");
+    $ret_value = array("MESSAGE" => "SUCCESS", "NUM_ROWS" => pg_num_rows($result));
 
     # Variable used to index all the json encodes of the
     # objects in the return string.
     $index = 0;
     $instancias = array();
-    if (pg_num_rows($result)){
-        # retrieve each result of the query
-        while ($row = pg_fetch_row($result)) {
-         $instancia = array("content" => $row[0],
-                            "deadline"=> $row[1]);
-         array_push($instancias, $instancia);
-        }
-
-        $ret_value["INSTANCES"] = $instancias;
-
-        pg_close($connection);
-        return $ret_value;
+    # retrieve each result of the query
+    while ($row = pg_fetch_row($result)) {
+        $instancia = array("content" => $row[0],
+            "deadline"=> $row[1]);
+        array_push($instancias, json_encode($instancia));
     }
-    else
-    {
-        pg_close($connection);
-        return array("MESSAGE"=>"406");
-    }
+
+    $ret_value["INSTANCES"] = json_encode($instancias);
 
     pg_close($conn);
-
-    return array("MESSAGE" => "SUCCESS", "DATA" => $newHtml);
+    return $ret_value;
 
 }
 
+function attemptGetProjects() {
+    $conn = databaseConnection();
+    if($conn == null) {
+        return array("MESSAGE" => "500");
+    }
+
+    # Get the username out of this session.
+    $username = $_SESSION['Username'];
+    $sql = "SELECT project_id FROM UsersAndProjects WHERE username = '$username'";
+
+    $result = pg_query($conn, $sql);
+    # Prepare a return value for the function.
+    $ret_value = array("MESSAGE" => "SUCCESS", "NUM_ROWS" => pg_num_rows($result));
+
+    # Variable used to index all the json encodes of the
+    # objects in the return string.
+    $instancias = array();
+    while ($row = pg_fetch_row($result)) {
+        $sql = "SELECT project_id, name, description, deadline FROM Projects WHERE project_id = '$row[0]';";
+
+        $result2 = pg_query($conn, $sql);
+        # retrieve each result of the query
+        while ($row2 = pg_fetch_row($result2)) {
+            $instancia = array(
+                "id" => $row2[0],
+                "name" => $row2[1],
+                "description"=> $row2[2],
+                "deadline" => $row2[3]);
+            array_push($instancias, json_encode($instancia));
+        }
+
+    }    
+
+    $ret_value["INSTANCES"] = json_encode($instancias);
+
+    pg_close($conn);
+    return $ret_value;
+
+}
 /*
 
 function attemptPostcomment($id, $text, $username) {

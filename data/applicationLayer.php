@@ -17,10 +17,10 @@ case "LOGOUT" :
 case "GETTASKS" :
     getTasksFunction();
     break;
-/*        case "GETCOMMENTS":
-                getCommentsFunction();
-                break;
-        case "SEARCH":
+case "GETPROJECTS":
+    getProjectsFunction();
+    break;
+/*        case "SEARCH":
                 searchFunction();
                 break;
         case "PROFILE":
@@ -140,7 +140,20 @@ function getTasksFunction() {
         genericErrorFunction($result["MESSAGE"]);
     }
 
-    $response = array("RESULT" => "OK", "DATA" => json_encode($result["INSTANCES"]));
+    $response = array("RESULT" => "OK", "DATA" => $result["INSTANCES"], "NUM_ROWS" => $result["NUM_ROWS"]);
+    echo json_encode($response);
+
+
+}
+
+function getProjectsFunction() {
+    checkCredentials();
+    $result = attemptGetProjects();
+    if($result["MESSAGE"] != "SUCCESS") {
+        genericErrorFunction($result["MESSAGE"]);
+    }
+
+    $response = array("RESULT" => "OK", "DATA" => $result["INSTANCES"], "NUM_ROWS" => $result["NUM_ROWS"]);
     echo json_encode($response);
 
 
