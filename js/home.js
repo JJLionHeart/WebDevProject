@@ -18,4 +18,18 @@ $("#logout").click(function() {
             }
         });
 });
+
+$.ajax({
+   url : "./data/applicationLayer.php",
+   type: "POST",
+   dataType: "json",
+   ContentType: "application/json",
+   success: function(data) {
+      console.log(data.DATA);
+   },
+   error: function(data) {
+      alert("error while loading the tasks");
+   }
+});
+
 });
