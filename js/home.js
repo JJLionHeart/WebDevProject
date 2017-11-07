@@ -28,7 +28,7 @@ $.ajax({
       console.log(data.DATA);
    },
    error: function(data) {
-      alert("error while loading the tasks");
+      alert("An error ocurred while registering: "+data.statusText);
    }
 });
 
