@@ -1,23 +1,23 @@
 <?php
-	header('Content-type: application/json');
-	header('Accept: application/json');
-	require_once __DIR__ . '/dataLayer.php';
+header('Content-type: application/json');
+header('Accept: application/json');
+require_once __DIR__ . '/dataLayer.php';
 
-	$action = $_POST["action"];
+$action = $_POST["action"];
 
-	switch($action)
-	{
-		case "LOGIN" : loginFunction();
-						break;	
-		case "REGISTER" : registrationFunction();
-                        break;
-        case "LOGOUT" :
-                logoutFunction();
-                break;
-/*        case "COMMENT" :
-                sendCommentFunction();
-                break;
-        case "GETCOMMENTS":
+switch($action)
+{
+case "LOGIN" : loginFunction();
+    break;	
+case "REGISTER" : registrationFunction();
+    break;
+case "LOGOUT" :
+    logoutFunction();
+    break;
+case "GETTASKS" :
+    getTasksFunction();
+    break;
+/*        case "GETCOMMENTS":
                 getCommentsFunction();
                 break;
         case "SEARCH":
@@ -43,14 +43,14 @@
                 break;
         case "GETFRIENDLIST":
                 getFriendList();
-                break;*/
-	}
+break;*/
+}
 
-	function loginFunction()
-	{
-		$uName = $_POST["uName"];
-		$uPassword = $_POST["uPassword"];
-      
+function loginFunction()
+{
+    $uName = $_POST["uName"];
+    $uPassword = $_POST["uPassword"];
+
         /*
         $remember = $_POST["souviens"];
 
@@ -61,69 +61,90 @@
         }
          */
 
-		$loginResponse = attemptLogin($uName, $uPassword);
-		
-		if ($loginResponse["MESSAGE"] == "SUCCESS")
-		{
-			$response = array("result" => "OK");
+    $loginResponse = attemptLogin($uName, $uPassword);
 
-            session_start();
-            $_SESSION['Username'] = $uName;
-			echo json_encode($response);
-		}
-		else {
-			genericErrorFunction($loginResponse["MESSAGE"]);
-		}
-	}
-
-	function genericErrorFunction($errorCode)
-	{
-		switch($errorCode)
-		{
-			case "500" : header("HTTP/1.1 500 Bad connection, portal down");
-						 die("The server is down, we couldn't stablish the data base connection.");
-						 break;
-			case "406" : header("HTTP/1.1 406 User not found.");
-                         die("Wrong credentials provided.");
-                         break;
-            case "409" : header("HTTP/1.1 409 User already in use");
-                         die("User already in use");
-                         break;
-            case "407":
-                        header("HTTP/1.1 407 Cannot insert into database");
-                        die("Cannot insert into the database");
-                        break;
-
-		}
-	}
-
-	function registrationFunction() {
-		$uName = $_POST["userName"];
-        $uPassword = $_POST["password"];
-        $firstName = $_POST["fName"];
-        $lastName = $_POST["lName"];
-        $email = $_POST["email"];
-
-        $register_response = attemptRegister($uName, $uPassword,
-                                             $firstName, $lastName,
-                                             $email);
-        if ($register_response["MESSAGE"] == "SUCCESS") {
-			$response = array("RESULT" => "OK");
-
-            session_start();
-            $_SESSION['Username'] = $uName;
-			echo json_encode($response);
-        } else {
-			genericErrorFunction($register_response["MESSAGE"]);
-		}
-    }
-
-    function logoutFunction() {
-        session_start();
-        session_destroy();
+    if ($loginResponse["MESSAGE"] == "SUCCESS")
+    {
         $response = array("result" => "OK");
+
+        session_start();
+        $_SESSION['Username'] = $uName;
         echo json_encode($response);
     }
+    else {
+        genericErrorFunction($loginResponse["MESSAGE"]);
+    }
+}
+
+function genericErrorFunction($errorCode)
+{
+    switch($errorCode)
+    {
+    case "500" : header("HTTP/1.1 500 Bad connection, portal down");
+    die("The server is down, we couldn't stablish the data base connection.");
+    break;
+    case "406" : header("HTTP/1.1 406 User not found.");
+    die("Wrong credentials provided.");
+    break;
+    case "409" : header("HTTP/1.1 409 User already in use");
+    die("User already in use");
+    break;
+    case "407":
+        header("HTTP/1.1 407 Cannot insert into database");
+        die("Cannot insert into the database");
+        break;
+
+    }
+}
+
+function registrationFunction() {
+    $uName = $_POST["userName"];
+    $uPassword = $_POST["password"];
+    $firstName = $_POST["fName"];
+    $lastName = $_POST["lName"];
+    $email = $_POST["email"];
+
+    $register_response = attemptRegister($uName, $uPassword,
+        $firstName, $lastName,
+        $email);
+    if ($register_response["MESSAGE"] == "SUCCESS") {
+        $response = array("RESULT" => "OK");
+
+        session_start();
+        $_SESSION['Username'] = $uName;
+        echo json_encode($response);
+    } else {
+        genericErrorFunction($register_response["MESSAGE"]);
+    }
+}
+
+function logoutFunction() {
+    session_start();
+    session_destroy();
+    $response = array("result" => "OK");
+    echo json_encode($response);
+}
+
+function checkCredentials() {
+    session_start();
+    if(!isset($_SESSION['Username']) || $_SESSION['Username'] == '') {
+        genericErrorFunction("403");
+    }
+}
+
+# attempt to retrieve the tasks from the database.
+function getTasksFunction() {
+    checkCredentials();
+    $result = attemptGetTasks();
+    if($result["MESSAGE"] != "SUCCESS") {
+        genericErrorFunction($result["MESSAGE"]);
+    }
+
+    $response = array("RESULT" => "OK", "DATA" => json_encode($result["INSTANCES"]));
+    echo json_encode($response);
+
+
+}
 /*
     function sendCommentFunction() {
         session_start();
@@ -158,7 +179,7 @@
 
         $response = array("RESULT" => "OK", "DATA" => $result["DATA"]);
         echo json_encode($response);
-        
+
     }
 
     function searchFunction() {
@@ -235,7 +256,7 @@
 
 
     }
-    
+
     function gettNumberFriendRequests() {
         session_start();
         if(!isset($_SESSION['Username']) || 
@@ -260,7 +281,7 @@
         }
 
         $requester = $_POST['requester'];
-        
+
         $result = attemptDeleteRequest($requester, $accepted);
 
         if($result['MESSAGE'] != "SUCCESS") {
@@ -285,6 +306,6 @@
 
         echo json_encode(array("RESULT" => "OK", "DATA" => $result["DATA"]));
 
-        
-    }*/
+
+}*/
 ?>

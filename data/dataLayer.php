@@ -2,10 +2,10 @@
 
 function databaseConnection()
 {
-        extract(parse_url($_ENV["DATABASE_URL"]));
-        $pg_string =  "user=$user password=$pass host=$host dbname=" . substr($path, 1);
-        $pg_conn = pg_connect($pg_string);
-        return $pg_conn;
+    extract(parse_url($_ENV["DATABASE_URL"]));
+    $pg_string =  "user=$user password=$pass host=$host dbname=" . substr($path, 1);
+    $pg_conn = pg_connect($pg_string);
+    return $pg_conn;
 }
 
 function attemptLogin($userName, $userPassword)
@@ -88,6 +88,55 @@ function attemptRegister($uName, $uPassword, $firstName, $lastName, $email) {
     return array("MESSAGE" => "407");
 }
 
+function attemptGetTasks() {
+    $conn = databaseConnection();
+    if($conn == null) {
+        return array("MESSAGE" => "500");
+    }
+
+    # Get the username out of this session.
+    $username = $_SESSION['Username'];
+    $sql = "SELECT content, deadline FROM Comments WHERE username = '$username';";
+
+    $result = pg_query($conn, $sql);
+
+    if(!$result) {
+        pg_close($conn);
+        return array("MESSAGE" => "407");
+    }
+
+    # Prepare a return value for the function.
+    $ret_value = array("MESSAGE" => "SUCCESS");
+
+    # Variable used to index all the json encodes of the
+    # objects in the return string.
+    $index = 0;
+    $instancias = array();
+    if (pg_num_rows($result)){
+        # retrieve each result of the query
+        while ($row = pg_fetch_row($result)) {
+         $instancia = array("content" => $row[0],
+                            "deadline"=> $row[1]);
+         array_push($instancias, $instancia);
+        }
+
+        $ret_value["INSTANCES"] = $instancias;
+
+        pg_close($connection);
+        return $ret_value;
+    }
+    else
+    {
+        pg_close($connection);
+        return array("MESSAGE"=>"406");
+    }
+
+    pg_close($conn);
+
+    return array("MESSAGE" => "SUCCESS", "DATA" => $newHtml);
+
+}
+
 /*
 
 function attemptPostcomment($id, $text, $username) {
@@ -111,32 +160,6 @@ function attemptPostcomment($id, $text, $username) {
 
 }
 
-function attemptGetComments() {
-    $conn = databaseConnection();
-    if($conn == null) {
-        return array("MESSAGE" => "500");
-    }
-
-    $sql = "SELECT * FROM Comments;";
-
-    $result = $conn->query($sql);
-
-    if(!$result) {
-        pg_close($conn);
-        return array("MESSAGE" => "407");
-    }
-
-    $newHtml = "";
-    while($row = $result->fetch_assoc()){
-        $temp = '<div class="SingleComment"> <b>'. $row['userName'] . '</b>: '.$row['text'].'</div>';
-        $newHtml = $newHtml . $temp;
-    }
-
-    pg_close($conn);
-
-    return array("MESSAGE" => "SUCCESS", "DATA" => $newHtml);
-
-}
 
 function attemptSearch($username, $firstName, $lastName, $email) {
     $current_user = $_SESSION['Username'];
@@ -308,7 +331,7 @@ function attemptGetNumberRequests() {
         return array("MESSAGE" => "407");
     }
     return array("MESSAGE" => "SUCCESS", "number" => $result->num_rows);
-    
+
 
 }
 
@@ -334,7 +357,7 @@ function attemptDeleteRequest($requester, $accepted) {
         if(!$result) {
             return array("MESSAGE" => "407");
         }
-        
+
         $sql = "INSERT INTO Friendship(person, friend) VALUES('$requester', '$current_user');";
         $result = $conn->query($sql);
         if(!$result) {

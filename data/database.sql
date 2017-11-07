@@ -13,7 +13,7 @@ CREATE TABLE UsersAndProjects(project_id INTEGER REFERENCES Projects(project_id)
                               PRIMARY KEY (project_id, username));
 
                         
-CREATE TABLE Tasks(taskid serial PRIMARY KEY, content varchar(30), dealine DATE,
+CREATE TABLE Tasks(taskid serial PRIMARY KEY, content varchar(30), deadline DATE,
                    username varchar(30) REFERENCES Users(username));
 
 CREATE TABLE Contacts(username varchar(30) REFERENCES Users(username), 
