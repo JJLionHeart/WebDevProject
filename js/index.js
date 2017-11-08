@@ -1,17 +1,17 @@
 $(document).ready(function() {
     $(".login-form").submit( function() {
-        if($("#username").val() == "") {
+        if($("#username-login").val() == "") {
             alert("username should not be empty");
             return;
         } 
 
-        if($("#password").val() == "") {
+        if($("#password-login").val() == "") {
             alert("Password should not be empty");
             return;
         }
 
-        var username = $("#username").val();
-        var password = $("#password").val();
+        var username = $("#username-login").val();
+        var password = $("#password-login").val();
         // var souviens = $("#souviens").is(":checked"); 
         var jsonToSend = {
             "uName": username,

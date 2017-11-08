@@ -426,6 +426,10 @@
   background-color: #8A76B9 !important;
 }
 
+.deep-purple2-text {
+  color: #8A76B9 !important;
+}
+
 .deep-purple-text {
   color: #673ab7 !important;
 }
@@ -6014,6 +6018,11 @@ textarea.materialize-textarea {
           box-sizing: content-box;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+}
+#username-login:focus:not([readonly]),
+#password-login:focus:not([readonly]){
+  border-bottom: 1px solid #673ab7;
+  box-shadow: 0 1px 0 0 #673ab7;
 }
 
 input:not([type]):disabled, input:not([type])[readonly="readonly"],
