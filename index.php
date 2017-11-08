@@ -16,7 +16,7 @@
 	<div id="login" class="row scrollspy deep-purple2">
 		<div class="section no-pad-bot">
 			<div class="container">
-				<h1 class="header center white-text">Welcome to our web page </h1>
+				<h2 class="header center white-text">Welcome to our web page </h2>
 			</div>
 		</div>
 		<div class="card-panel col s4 z-depth-4 offset-s4">
@@ -39,9 +39,10 @@
 				</div>
 			</form>
 			</fieldset>
-			</br>
 			<a id="submit" class="btn-large waves-effect waves-light deep-purple col s4 offset-s4">Enter</a>
-			</br>
+			<div id="scroll" class="section no-pad-bot col s12 offset-s4 deep-purple-text">
+				<a class= "center deep-purple-text" href="#index-banner">Create an account</a>
+			</div>
 		</div>
 	</div>
 
