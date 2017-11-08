@@ -1,3 +1,32 @@
-<?php
-    echo 'hello world :)';
-?>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<link href='css/fullcalendar.min.css' rel='stylesheet' />
+<link href='css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+<script src='js/moment.min.js'></script>
+<script src='js/jquery.js'></script>
+<script src='js/fullcalendar.min.js'></script>
+<script src='js/calendar.js'></script>	
+</head>
+<body>
+	<nav>
+		<div class="nav-wrapper deep-purple2">
+			<a href="#" class="brand-logo">Logo</a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down deep-purple2">
+			<li><a>New Task</a></li>
+			<li><a>Agenda</a></li>
+			<li><a>Calendar</a></li>
+			<li id = "logout"><a>Logout</a></li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+	<div id='calendar'></div>
+	</div>
+
+</body>
+</html>

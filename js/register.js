@@ -52,12 +52,38 @@ function validateRegistrationForm() {
 		isValid = false;
 	}
 
-	goHome(isValid);
-}
+	if (isValid) {
+		var firstName = $("#firstName").val();
+		var lastName = $("#lastName").val();
+		var username = $("#userName").val();
+		var email = $("#email").val();
+		var password = $("#password").val();
 
+		var jsonToSend = {
+			"userName": username,
+			"password": password,
+			"fName": firstName,
+			"lName": lastName,
+			"email": email,
+			"action" : "REGISTER"        
+		};
 
-function goHome(isValid) {
-	if(isValid) {
-		window.location.replace("home.html");
+		$.ajax({
+			url: "./data/applicationLayer.php",
+			type: "POST",
+			data: jsonToSend,
+			ContentType: "application/json",
+			dataType: "json",
+			success : function(dataReceived) {
+				window.location = "home.php";
+			},
+			error: function(errorMessage) {
+				alert("An error ocurred while registering: "+errorMessage.statusText);
+
+			}
+		});
 	}
+
 }
+
+

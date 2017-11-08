@@ -9,14 +9,16 @@ $(document).ready(function() {
         defaultDate: '2017-10-12',
         navLinks: true, // can click day/week names to navigate views
         eventLimit: true, // allow "more" link when too many events
-        editable: false, // Don't allow editing of events
         handleWindowResize: true,
         weekends: false, // Hide weekends
+       // defaultView: 'agendaWeek', // Only show week view
+        header: true, // Hide buttons/titles
+        displayEventTime: true, // Display event time
+        editable: false,
         defaultView: 'agendaWeek', // Only show week view
-        //header: false, // Hide buttons/titles
         minTime: '07:30:00', // Start time for the calendar
         maxTime: '22:00:00', // End time for the calendar
-        displayEventTime: true, // Display event time
+
 
         events: [
             {
