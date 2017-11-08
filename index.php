@@ -26,8 +26,8 @@
 				<div class="row margin">
 					<div class="input-field col s12">
 						<!--<i class="mdi-social-person-outline prefix"> </i>   Add the image-->
-						<input id="username" type="text" placeholder="Username">
-						<!--<label for="username" class="center-align">Username</label> -->
+						<input id="username" type="text">
+						<label for="username" class="center-align">Username</label>
 					</div>
 				</div>
 				<div class="row margin">
@@ -100,7 +100,7 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
 	<script type="text/javascript" src="js/register.js"></script>
-	<script src='js/index.js'></script>
+	<script  type="text/javascript" src='js/index.js'></script>
 
 </body>
 </html>
