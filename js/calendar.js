@@ -11,14 +11,11 @@ $(document).ready(function() {
         eventLimit: true, // allow "more" link when too many events
         handleWindowResize: true,
         weekends: false, // Hide weekends
-       // defaultView: 'agendaWeek', // Only show week view
-        header: true, // Hide buttons/titles
+        defaultView: 'month', // Only show week view
         displayEventTime: true, // Display event time
         editable: false,
-        defaultView: 'agendaWeek', // Only show week view
         minTime: '07:30:00', // Start time for the calendar
         maxTime: '22:00:00', // End time for the calendar
-
 
         events: [
             {

@@ -6,7 +6,7 @@
 <link href='css/fullcalendar.print.min.css' rel='stylesheet' media='print' />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+<link href="css/mystyle.css" type="text/css" rel="stylesheet" media="screen,projection" />
 <script src='js/moment.min.js'></script>
 <script src='js/jquery.js'></script>
 <script src='js/fullcalendar.min.js'></script>
@@ -25,7 +25,9 @@
 		</div>
 	</nav>
 	<div class="container">
-	<div id='calendar'></div>
+		<div class="section">
+			<div id='calendar'></div>
+		</div>
 	</div>
 
 </body>
