@@ -1,7 +1,10 @@
-#login, #register, #calendar{
+#login, #calendar{
     height:  100%
 }
 
+#submit{
+    margin-bottom:10%;
+}
 .fc-today {
     opacity: 0;
     border: none;
