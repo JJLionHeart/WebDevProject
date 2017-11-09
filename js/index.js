@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $(".login-form").submit( function() {
+    $("#submit").click( "on", function() {
         if($("#username-login").val() == "") {
             alert("username should not be empty");
             return;
