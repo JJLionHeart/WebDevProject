@@ -202,7 +202,71 @@ function attemptDelete($id, $task) {
     pg_close($conn);
     return array("MESSAGE" => "SUCCESS");
 
-} 
+}
+
+function attemptModify($task) {
+    $username = $_SESSION['Username'];
+    $conn = databaseConnection();
+    if($conn == null) {
+        return array("MESSAGE" => "500");
+    }
+
+    if($task) {
+      $content = $_POST["CONTENT"];
+      $deadline = $_POST["DEADLINE"];
+      $start_date = $_POST["START_DATE"];
+      $id = $_POST["ID"];
+      $sql = "UPDATE Tasks SET content = '$content', deadline = '$deadline', start_date = '$start_date' WHERE taskid = '$id' AND username = '$username';";
+
+      $result = pg_query($conn, $sql);
+
+      if(!$result) {
+         return array("MESSAGE" => "407");
+      }
+    } else {
+      
+        // Primero nos tenemos que asegurar que este proyecto
+        // corresponda al usuario.
+        $id = $_POST["ID"];
+        $sql = "SELECT username FROM UsersAndPRojects WHERE project_id = '$id';";
+
+        $result = pg_query($conn, $sql);
+
+        if(!$result) {
+         return array("MESSAGE" => "408");
+        }
+       
+        $rows = pg_num_rows($result);
+
+        if($rows != 1) {
+         return array("MESSAGE" => "403");
+        }
+
+        $row = pg_fetch_row($result);
+
+        if($row[0] != $username) {
+         return array("MESSAGE" => "403");
+        }
+
+        // Now that we are certain that this project belongs to the
+        // user, update the info.
+        $name = $_POST["NAME"];
+        $description = $_POST["DESCRIPTION"];
+        $start_date = $_POST["START_DATE"];
+        $deadline = $_POST["DEADLINE"];
+
+        $sql = "UPDATE Projects SET name = '$name', description = '$description', start_date = '$start_date', deadline = '$deadline' WHERE project_id = '$id';";
+
+        $result = pg_query($conn, $sql);
+
+        if (!$result) {
+         return array("MESSAGE" => "407");
+        }
+
+        return array("MESSAGE" => "SUCCESS");
+
+    }
+}
 
 /*
 
