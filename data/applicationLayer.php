@@ -20,6 +20,9 @@ case "GETTASKS" :
 case "GETPROJECTS":
     getProjectsFunction();
     break;
+case "DELETETASK":
+    deleteTaskFunction();
+    break;
 /*        case "SEARCH":
                 searchFunction();
                 break;
@@ -158,6 +161,23 @@ function getProjectsFunction() {
 
 
 }
+
+// Use a single function to request the delete of a project
+// and a task, if we want to delete a task we just send a 
+// true to the function.
+function deleteFunction($task) {
+   checkCredentials();
+   $id = $_POST["ID"];
+   $result = attemptDelete($id, $task);
+
+   if($result["MESSAGE"] != "SUCCESS") {
+      genericErrorFunction($result["MESSAGE"]);
+   }
+
+   $response = array("RESULT" => "OK");
+   echo json_encode($response);
+}
+
 /*
     function sendCommentFunction() {
         session_start();

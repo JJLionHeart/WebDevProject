@@ -96,7 +96,7 @@ function attemptGetTasks() {
 
     # Get the username out of this session.
     $username = $_SESSION['Username'];
-    $sql = "SELECT content, deadline FROM Tasks WHERE username = '$username';";
+    $sql = "SELECT content, deadline, start_date FROM Tasks WHERE username = '$username';";
 
 
     $result = pg_query($conn, $sql);
@@ -116,7 +116,8 @@ function attemptGetTasks() {
     # retrieve each result of the query
     while ($row = pg_fetch_row($result)) {
         $instancia = array("content" => $row[0],
-            "deadline"=> $row[1]);
+            "deadline"=> $row[1],
+            "start_date" => $row[2]);
         array_push($instancias, json_encode($instancia));
     }
 
@@ -145,7 +146,7 @@ function attemptGetProjects() {
     # objects in the return string.
     $instancias = array();
     while ($row = pg_fetch_row($result)) {
-        $sql = "SELECT project_id, name, description, deadline FROM Projects WHERE project_id = '$row[0]';";
+        $sql = "SELECT project_id, name, description, deadline, start_date FROM Projects WHERE project_id = '$row[0]';";
 
         $result2 = pg_query($conn, $sql);
         # retrieve each result of the query
@@ -154,7 +155,8 @@ function attemptGetProjects() {
                 "id" => $row2[0],
                 "name" => $row2[1],
                 "description"=> $row2[2],
-                "deadline" => $row2[3]);
+                "deadline" => $row2[3],
+                "start_date" => $row2[4]);
             array_push($instancias, json_encode($instancia));
         }
 
@@ -166,6 +168,34 @@ function attemptGetProjects() {
     return $ret_value;
 
 }
+
+// The second argument indicates if we are going to delete a task
+// if it is set to false, we instead try to delete a project.
+function attemptDelete($id, $task) {
+    $username = $_SESSION['Username'];
+    $sql = "";
+
+    if($task) {
+        $sql = "DELETE FROM Tasks WHERE username = '$username' AND taskid = '$id'";
+    } else {
+        $sql = "DELETE FROM Projects where username = '$username' AND project_id = '$id'";
+    }
+
+    $conn = databaseConnection();
+    if($conn == null) {
+        return array("MESSAGE" => "500");
+    }
+
+    $result = pg_query($conn, $sql);
+    if(!$result) {
+      return array("MESSAGE" => "407");
+    }
+
+    pg_close($conn);
+    return array("MESSAGE" => "SUCCESS");
+     
+} 
+
 /*
 
 function attemptPostcomment($id, $text, $username) {
