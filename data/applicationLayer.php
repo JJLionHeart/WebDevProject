@@ -21,7 +21,10 @@ case "GETPROJECTS":
     getProjectsFunction();
     break;
 case "DELETETASK":
-    deleteTaskFunction();
+    deleteFunction(true);
+    break;
+case "DELETEPROJECT":
+    deleteFunction(false);
     break;
 /*        case "SEARCH":
                 searchFunction();

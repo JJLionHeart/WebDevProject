@@ -174,11 +174,12 @@ function attemptGetProjects() {
 function attemptDelete($id, $task) {
     $username = $_SESSION['Username'];
     $sql = "";
-
+    $sql2 = "";
     if($task) {
         $sql = "DELETE FROM Tasks WHERE username = '$username' AND taskid = '$id'";
     } else {
-        $sql = "DELETE FROM Projects where username = '$username' AND project_id = '$id'";
+        $sql = "DELETE FROM Projects where project_id = '$id'";
+        $sql2 = "DELETE FROM UsersAndProjects where username = '$username' AND project_id = '$id';"; 
     }
 
     $conn = databaseConnection();
@@ -186,14 +187,21 @@ function attemptDelete($id, $task) {
         return array("MESSAGE" => "500");
     }
 
+    if($sql2 != "") {
+        $result = pg_query($conn, $sql2);
+        if(!$result) {
+            return array("MESSAGE" => "407");
+        }
+    }
+
     $result = pg_query($conn, $sql);
     if(!$result) {
-      return array("MESSAGE" => "407");
+        return array("MESSAGE" => "407");
     }
 
     pg_close($conn);
     return array("MESSAGE" => "SUCCESS");
-     
+
 } 
 
 /*
