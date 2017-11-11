@@ -118,5 +118,20 @@ function addTask(taskId){
 }
 
 function deleteTask(taskId) {
-
+    $.ajax({
+        url : "./data/applicationLayer.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            "action" : "DELETETASK",
+            "ID" : taskId
+        },
+        ContentType: "application/json",
+        success: function(data) {
+            console.log("Task deleted");
+        },
+        error: function(data) {
+           alert("An error ocurred while getting Tasks: "+data.statusText);
+        }
+     });
 }
