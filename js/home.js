@@ -49,7 +49,7 @@ $.ajax({
        var jsons =jQuery.parseJSON(data.DATA);
        console.log(data.DATA);
        console.log(jsons);
-       //console.log(jQuery.parseJSON(jsons));
+       console.log(jQuery.parseJSON(jsons));
        
        var newHTML = "";
        console.log(jsons[0].deadline);
