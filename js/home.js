@@ -4,7 +4,9 @@ $(document).ready(function() {
         {
             name: 'delete',
             callback: function (collectionItem, collection) {
+                deleteTask($(collectionItem));
                 $(collectionItem).remove();
+                console.log($(collectionItem));
             }
             },
             {
