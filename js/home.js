@@ -49,6 +49,7 @@ $.ajax({
        var jsons = jQuery.parseJSON(jQuery.parseJSON(data.DATA));
        console.log(jsons);
        var newHTML = "";
+       console.log(jsons[0].deadline);
        for(var i = 0; i < data.NUM_ROWS; i++) {
             newHTML += "<li id="+ i + " class= 'collection-item' style='touch-action: pan-y;'>";
             newHTML += "<input id=individual-task"+i+" type='checkbox'> <label for=individual-task"+i+">"+jsons[i].content+"<a href='#!' class='secondary-content'>";
