@@ -54,18 +54,6 @@
                     <li class="collection with-header orange white-text center">
                         <h4 class="task-card-title">Your Projects</h4>
                     </li>
-                    <li id="project-tasks" class="collection-item dismissable" style="touch-action: pan-y;">
-                            <input id="task1" type="checkbox">
-                            <label for="task1" style="text-decoration: line-through;">Create Mobile App UI. <a href="#" class="secondary-content"><span class="ultra-small">Today</span></a>
-                            </label>
-                            <span class="task-cat teal">Mobile App</span>
-                    </li>
-                    <li class="collection-item dismissable" style="touch-action: pan-y;">
-                            <input id="task2" type="checkbox">
-                            <label for="task2" style="text-decoration: none;">Check the new API standerds. <a href="#" class="secondary-content"><span class="ultra-small">Monday</span></a>
-                            </label>
-                            <span class="task-cat purple">Web API</span>
-                    </li>
             </ul>
         </div>
 </div>

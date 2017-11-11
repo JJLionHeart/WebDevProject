@@ -70,6 +70,16 @@ $.ajax({
    },
    ContentType: "application/json",
    success: function(data) {
+    var jsons =jQuery.parseJSON(data.DATA);
+    var newHTML = "";
+    for(var i = 0; i < data.NUM_ROWS; i++) {
+         var project = jQuery.parseJSON(jsons[i]);
+         newHTML += "<li id="+ i + " class= 'collection-item' style='touch-action: pan-y;'>";
+         newHTML += "<input id=project-tasks"+project.id+" type='checkbox'> <label for=individual-task"+i+">"+project.name+"</br>"+"<a href='#!' class='secondary-content'>";
+         newHTML += "<span class='ultra-small right'>" + project.description +"</span></a></label></li>";
+         $("#tasks").append(newHTML);
+    }
+
        // La idea es exactamente igual que con tasks
        // Data contiene dos campos utiles
        // 1) data.NUM_ROWS contiene el numero de tasks que hay en la base
