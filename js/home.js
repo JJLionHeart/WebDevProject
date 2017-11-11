@@ -47,16 +47,12 @@ $.ajax({
    ContentType: "application/json",
    success: function(data) {
        var jsons =jQuery.parseJSON(data.DATA);
-       console.log(data.DATA);
-       console.log(jsons);
-       console.log(jQuery.parseJSON(jsons));
-       
        var newHTML = "";
-       console.log(jsons[0].deadline);
        for(var i = 0; i < data.NUM_ROWS; i++) {
+            var task = jQuery.parseJSON(jsons[i]);
             newHTML += "<li id="+ i + " class= 'collection-item' style='touch-action: pan-y;'>";
-            newHTML += "<input id=individual-task"+i+" type='checkbox'> <label for=individual-task"+i+">"+jsons[i].content+"<a href='#!' class='secondary-content'>";
-            newHTML += "<span class='ultra-small right'>" + jsons[i].deadline +"</span></a></label></li>";
+            newHTML += "<input id=individual-task"+i+" type='checkbox'> <label for=individual-task"+i+">"+task.content+"<a href='#!' class='secondary-content'>";
+            newHTML += "<span class='ultra-small right'>" + task.deadline +"</span></a></label></li>";
             $("#tasks").append(newHTML);
        }
 
