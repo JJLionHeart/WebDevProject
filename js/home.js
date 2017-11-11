@@ -46,8 +46,10 @@ $.ajax({
    },
    ContentType: "application/json",
    success: function(data) {
-       var jsons = jQuery.parseJSON(jQuery.parseJSON(data.DATA));
+       var jsons =jQuery.parseJSON(data.DATA);
        console.log(jsons);
+       console.log(jQuery.parseJSON(jsons));
+       
        var newHTML = "";
        console.log(jsons[0].deadline);
        for(var i = 0; i < data.NUM_ROWS; i++) {
