@@ -1,4 +1,29 @@
 $(document).ready(function() {
+    var events = [];
+    $.ajax({
+        url : "./data/applicationLayer.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            "action" : "GETTASKS"
+        },
+        ContentType: "application/json",
+        success: function(data) {
+            var jsons = jQuery.parseJSON(data.DATA);
+            console.log(jsons);
+            var newHTML = "";
+            for(var i = 0; i < data.NUM_ROWS; i++) {
+                events.push({
+                    title: jsons[i].content,
+                    start: jsons[i].deadline,
+                    color:"#673ab7"
+                })
+            }
+        },
+        error: function(data) {
+           alert("An error ocurred while getting Tasks: "+data.statusText);
+        }
+     });
     
     $('#calendar').fullCalendar({
         header: {
@@ -17,65 +42,7 @@ $(document).ready(function() {
         minTime: '07:30:00', // Start time for the calendar
         maxTime: '22:00:00', // End time for the calendar
 
-        events: [
-            {
-                title: 'All Day Event',
-                start: '2017-10-01',
-                color: '#FF1744'
-            },
-            {
-                title: 'Long Event',
-                start: '2017-10-07',
-                end: '2017-10-10',
-                color: '#FF1744'
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: '2017-10-09T16:00:00'
-            },
-            {
-                id: 999,
-                title: 'Repeating Event',
-                start: '2017-10-16T16:00:00',
-                color: '#FF1744'
-            },
-            {
-                title: 'Conference',
-                start: '2017-10-11',
-                end: '2017-10-13'
-            },
-            {
-                title: 'Meeting',
-                start: '2017-10-12T10:30:00',
-                end: '2017-10-12T12:30:00'
-            },
-            {
-                title: 'Lunch',
-                start: '2017-10-12T12:00:00'
-            },
-            {
-                title: 'Meeting',
-                start: '2017-10-12T14:30:00'
-            },
-            {
-                title: 'Happy Hour',
-                start: '2017-10-12T17:30:00'
-            },
-            {
-                title: 'Dinner',
-                start: '2017-10-12T20:00:00'
-            },
-            {
-                title: 'Birthday Party',
-                start: '2017-10-13T07:00:00'
-            },
-            {
-                title: 'Click for Google',
-                url: 'http://google.com/',
-                start: '2017-10-28'
-            }
-        ]
+        events
     });
     
 });
