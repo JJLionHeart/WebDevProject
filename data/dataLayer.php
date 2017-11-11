@@ -204,7 +204,7 @@ function attemptDelete($id, $task) {
 
 }
 
-function attemptModify($task) {
+function attemptModify($task, $new) {
     $username = $_SESSION['Username'];
     $conn = databaseConnection();
     if($conn == null) {
@@ -212,40 +212,50 @@ function attemptModify($task) {
     }
 
     if($task) {
-      $content = $_POST["CONTENT"];
-      $deadline = $_POST["DEADLINE"];
-      $start_date = $_POST["START_DATE"];
-      $id = $_POST["ID"];
-      $sql = "UPDATE Tasks SET content = '$content', deadline = '$deadline', start_date = '$start_date' WHERE taskid = '$id' AND username = '$username';";
-
-      $result = pg_query($conn, $sql);
-
-      if(!$result) {
-         return array("MESSAGE" => "407");
-      }
-    } else {
-      
-        // Primero nos tenemos que asegurar que este proyecto
-        // corresponda al usuario.
-        $id = $_POST["ID"];
-        $sql = "SELECT username FROM UsersAndPRojects WHERE project_id = '$id';";
+        $content = $_POST["CONTENT"];
+        $deadline = $_POST["DEADLINE"];
+        $start_date = $_POST["START_DATE"];
+        $sql = "";
+        if ($new) {
+            $sql = "INSERT INTO Tasks(content, deadline, start_date, username) VALUES('$content', '$deadline', '$start_date', '$username');";
+        } else {
+            $id = $_POST["ID"];
+            $sql = "UPDATE Tasks SET content = '$content', deadline = '$deadline', start_date = '$start_date' WHERE taskid = '$id' AND username = '$username';";
+        }
 
         $result = pg_query($conn, $sql);
 
         if(!$result) {
-         return array("MESSAGE" => "408");
+            return array("MESSAGE" => "407");
         }
-       
-        $rows = pg_num_rows($result);
+    } else {
 
-        if($rows != 1) {
-         return array("MESSAGE" => "403");
-        }
+        $id = "";
+        if (!$new) {
+            // Primero nos tenemos que asegurar que este proyecto
+            // corresponda al usuario.
+            $id = $_POST["ID"];
+            $sql = "SELECT username FROM UsersAndPRojects WHERE project_id = '$id';";
 
-        $row = pg_fetch_row($result);
+            $result = pg_query($conn, $sql);
 
-        if($row[0] != $username) {
-         return array("MESSAGE" => "403");
+            if(!$result) {
+                return array("MESSAGE" => "408");
+            }
+
+            $rows = pg_num_rows($result);
+
+            if($rows != 1) {
+                return array("MESSAGE" => "403");
+            }
+
+            $row = pg_fetch_row($result);
+
+            if($row[0] != $username) {
+                return array("MESSAGE" => "403");
+            }
+        } else {
+            $id = (string)(time() + rand(1, 100000));
         }
 
         // Now that we are certain that this project belongs to the
@@ -255,13 +265,29 @@ function attemptModify($task) {
         $start_date = $_POST["START_DATE"];
         $deadline = $_POST["DEADLINE"];
 
-        $sql = "UPDATE Projects SET name = '$name', description = '$description', start_date = '$start_date', deadline = '$deadline' WHERE project_id = '$id';";
+        $sql = "";
+        if ($new) {
+            $sql = "INSERT INTO Projects(project_id, name, description, start_date, deadline) 
+                VALUES('$id', '$name', '$description', '$start_date', '$deadline')";
+            $result = pg_query($conn, $sql);
+            if (!$result) {
+                return array("MESSAGE" => "407");
+            }
 
-        $result = pg_query($conn, $sql);
+            $sql = "INSERT INTO UsersAndProjects(project_id, username) VALUES('$id', '$username');";
+                $result = pg_query($conn, $sql);
+            if (!$result) {
+                return array("MESSAGE" => "407");
+            }
+        } else {
+            $sql = "UPDATE Projects SET name = '$name', description = '$description', start_date = '$start_date', deadline = '$deadline' WHERE project_id = '$id';";
 
-        if (!$result) {
-         return array("MESSAGE" => "407");
+            $result = pg_query($conn, $sql);
+            if (!$result) {
+                return array("MESSAGE" => "407");
+            }
         }
+
 
         return array("MESSAGE" => "SUCCESS");
 

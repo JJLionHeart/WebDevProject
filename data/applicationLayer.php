@@ -27,10 +27,16 @@ case "DELETEPROJECT":
     deleteFunction(false);
     break;
 case "MODIFYTASK":
-    modifyFunction(true);
+    modifyFunction(true, false);
     break;
 case "MODIFYPROJECT":
-    modifyFunction(false);
+    modifyFunction(false, false);
+    break;
+case "ADDTASK":
+    modifyFunction(true, true);
+    break;
+case "ADDPROJECT":
+    modifyFunction(false, true);
     break;
 /*        case "SEARCH":
                 searchFunction();
@@ -187,10 +193,10 @@ function deleteFunction($task) {
    echo json_encode($response);
 }
 
-function modifyFunction($task) {
+function modifyFunction($task, $new) {
    checkCredentials();
 
-   $result = attemptModify($task);
+   $result = attemptModify($task, $new);
 
    if($result["MESSAGE"] != "SUCCESS") {
       genericErrorFunction($result["MESSAGE"]);

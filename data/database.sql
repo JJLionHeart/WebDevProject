@@ -4,12 +4,12 @@ CREATE TABLE Users(username varchar(30) PRIMARY KEY,
                   last_name varchar(30) NOT NULL,
                   email varchar(30));
 
-CREATE TABLE Projects(project_id serial PRIMARY KEY, name varchar(50), 
+CREATE TABLE Projects(project_id varchar(20) PRIMARY KEY, name varchar(50), 
                       description varchar(256), 
                       start_date DATE,
                       deadline DATE);
 
-CREATE TABLE UsersAndProjects(project_id INTEGER REFERENCES Projects(project_id), 
+CREATE TABLE UsersAndProjects(project_id varchar(20) REFERENCES Projects(project_id), 
                               username varchar(30) REFERENCES Users(username),
                               PRIMARY KEY (project_id, username));
 
