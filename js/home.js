@@ -1,4 +1,20 @@
 $(document).ready(function() {
+    var colors = ['lightgrey', 'lightblue', 'lightgreen'];
+    MaterializeCollectionActions.configureActions($('#tasks'), [
+        {
+            name: 'delete',
+            callback: function (collectionItem, collection) {
+                $(collectionItem).remove();
+            }
+            },
+            {
+            name: 'brush',
+            callback: function (collectionItem, collection) {
+                addTask($(collectionItem));
+            }
+        }
+    ]);
+
 $("#logout").click(function() {
         var jsonToSend = {
             "action" : "LOGOUT"
@@ -28,6 +44,16 @@ $.ajax({
    },
    ContentType: "application/json",
    success: function(data) {
+       var jsons = jQuery.parseJSON(data.DATA);
+       for(var i = 0; i < data.NUM_ROWS; i++) {
+            var newHTML = "<li id='individual-tasks' class= 'collection-item' style='touch-action: pan-y;'>"
+            newHTML += "<input id=task"+i+" type='checkbox'> <label for=task"+i+">"+jsons[i].content+"<a href='#!' class='secondary-content'>";
+            newHTML += "<span class='ultra-small right'>" + jsons[i].deadline +"</span></a></label></li>"
+            $("#tasks").append(newHtml);
+       }
+
+
+   
        // Data contiene dos campos utiles
        // 1) data.NUM_ROWS contiene el numero de tasks que hay en la base
        //    de datos para este usuario en particular
@@ -91,3 +117,9 @@ $.ajax({
    }
 });
 });
+
+
+function addTask(taskId){
+    //Funcion que modifica o agrega una task
+
+}

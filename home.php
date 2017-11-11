@@ -14,17 +14,22 @@
 	<title>Home page</title>
 
 	<!-- CSS  -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
 	<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/mystyle.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link rel="stylesheet" href="css/materialize-collection-actions-1.0.0.min.css">
+    <script src="js/materialize-collection-actions-1.0.0.min.js"></script>
 
 </head>
 
 <body>
     <nav>
-    <div class="nav-wrapper deep-purple2">
-        <a href="#" class="brand-logo">Logo</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down deep-purple2">
+    <div class="nav-wrapper cyan">
+        <a id="brand-logo">Space Unicorns</a>
+        <img id="unicornio" src="unicornio.png" alt=""> 
+        
+        <ul id="nav" class="right hide-on-med-and-down cyan">
         <li><a>New Task</a></li>
         <li><a>Agenda</a></li>
         <li><a>Calendar</a></li>
@@ -33,23 +38,36 @@
     </div>
 </nav>
 <div class="row">
-    <div class= "col s6">
-        <h4 class="header teal-text text-lighten-2">Your Tasks for today...</h4>
-        <div class="individual-tasks">
-            <div class= "col s5 offset-s1 orange lighten-3 white-text">
-                    Aqui se crean las tasks individuales...
-            </div>    
+    <div id="individual-sidebar" class="col s6">
+        <div class="collection with-header deep-purple white-text center">
+                <h4 class="task-card-title">Your Tasks for today <span><a class="btn-floating btn-large waves-effect waves-light orange center">
+                        <i class="material-icons">add</i>
+                </a></span></h4>
         </div>
+        <ul id="tasks" class="collection">
+           
+        </ul>
     </div>
 
-    <div class="col s6 ">
-        <h4 class="header teal-text text-lighten-2">Your projects</h4>
-        <div class= "projects">
-            <div class= "col s5 orange lighten-3 white-text">
-                    Aqui se crean las tasks de proyectos...
-            </div>  
+    <div id="projects-sidebar" class="col s6">
+            <ul id="task-card" class="collection with-header">
+                    <li class="collection with-header orange white-text center">
+                        <h4 class="task-card-title">Your Projects</h4>
+                    </li>
+                    <li id="project-tasks" class="collection-item dismissable" style="touch-action: pan-y;">
+                            <input id="task1" type="checkbox">
+                            <label for="task1" style="text-decoration: line-through;">Create Mobile App UI. <a href="#" class="secondary-content"><span class="ultra-small">Today</span></a>
+                            </label>
+                            <span class="task-cat teal">Mobile App</span>
+                    </li>
+                    <li class="collection-item dismissable" style="touch-action: pan-y;">
+                            <input id="task2" type="checkbox">
+                            <label for="task2" style="text-decoration: none;">Check the new API standerds. <a href="#" class="secondary-content"><span class="ultra-small">Monday</span></a>
+                            </label>
+                            <span class="task-cat purple">Web API</span>
+                    </li>
+            </ul>
         </div>
-    </div>
 </div>
 			
 	<script type="text/javascript" src="js/jquery.js"></script>
