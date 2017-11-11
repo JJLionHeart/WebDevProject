@@ -18,7 +18,7 @@
         <a href="#" class="brand-logo">Logo</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down deep-purple2">
         <li><a href="Add.html">New Task</a></li>
-        <li><a href="agenda.php">Agenda</a></li>
+        <li><a href="home.php">Home</a></li>
         <li><a href="calendar.php">Calendar</a></li>
         <li id = "logout"><a>Logout</a></li>
         </ul>
