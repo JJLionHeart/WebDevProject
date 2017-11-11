@@ -15,7 +15,7 @@ $(document).ready(function() {
             for(var i = 0; i < data.NUM_ROWS; i++) {
                 events.push({
                     title: "Terminar Web",
-                    start: "2017-11-13  09:34:21",
+                    start: "2017-11-13",
                     color:"#673ab7"
                 })
             }
