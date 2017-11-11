@@ -15,8 +15,8 @@ $(document).ready(function() {
             for(var i = 0; i < data.NUM_ROWS; i++) {
                 var task = jQuery.parseJSON(jsons[i]);
                 events.push({
-                    title: jsons[i].content,
-                    start: jsons[i].deadline, //No debe de incluir la hora
+                    title: task.content,
+                    start: task.deadline, //No debe de incluir la hora
                     color:"#673ab7"
                 })
             }
