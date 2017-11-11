@@ -46,11 +46,12 @@ $.ajax({
    success: function(data) {
        var jsons = jQuery.parseJSON(data.DATA);
        console.log(jsons);
+       var newHTML = "";
        for(var i = 0; i < data.NUM_ROWS; i++) {
-            var newHTML = "<li id='individual-tasks' class= 'collection-item' style='touch-action: pan-y;'>";
+            newHTML += "<li id='individual-tasks' class= 'collection-item' style='touch-action: pan-y;'>";
             newHTML += "<input id=task"+i+" type='checkbox'> <label for=task"+i+">"+jsons[i].content+"<a href='#!' class='secondary-content'>";
             newHTML += "<span class='ultra-small right'>" + jsons[i].deadline +"</span></a></label></li>";
-            $("#tasks").append(newHtml);
+            $("#tasks").append(newHTML);
        }
 
 
