@@ -46,7 +46,7 @@ $.ajax({
    },
    ContentType: "application/json",
    success: function(data) {
-       var jsons = jQuery.parseJSON(data.DATA);
+       var jsons = jQuery.parseJSON(jQuery.parseJSON(data.DATA));
        console.log(jsons);
        var newHTML = "";
        for(var i = 0; i < data.NUM_ROWS; i++) {
@@ -129,5 +129,5 @@ function addTask(taskId){
 }
 
 function deleteTask(taskId) {
-    
+
 }
