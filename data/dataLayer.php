@@ -294,6 +294,78 @@ function attemptModify($task, $new) {
     }
 }
 
+function attemptSearch() {
+    $current_user = $_SESSION['Username'];
+
+    $conn = databaseConnection();
+
+    $username = $_POST["USERNAME"];
+    $firstName = $_POST["FIRST_NAME"];
+    $lastName = $_POST["LAST_NAME"];
+    $email = $_POST["EMAIL"];
+    
+    if($conn == null) {
+        return array("MESSAGE" => "500");
+    }
+
+    $sql = "SELECT first_name, last_name, username, email FROM Users WHERE ";
+
+    if($username != "") {
+        $sql = $sql . " username = '$username';";
+    } else if($firstName != "" && $lastName != "") {
+        $sql = $sql. "first_name = '$firstName' AND last_name = '$lastName';";
+    } else if ($firstName != "") {
+        $sql = $sql. "first_name = '$firstName' ;";
+    } else if ($lastName != "") {
+        $sql = $sql. "last_name = '$lastName' ;";
+    } else {
+        $sql = $sql. "email = '$email' ;";
+    }
+
+    $result = pg_query($conn, $sql);
+
+    if(!$result) {
+        pg_close($conn);
+        return array("MESSAGE" => "407");   
+    }
+   
+    $count = 0;
+    $instancias = array();
+    while($row = pg_fetch_row($result)) {
+        if($row[2] != $current_user){
+            // Check for already existing friend requests
+            $sql = "SELECT * FROM FriendRequests WHERE (person = '".$row[2] . "' AND requester = '". $current_user . "') OR (
+                person = '".$current_user. "' AND requester = '". $row[2] . "');";
+
+            $temp_res1 = pg_query($conn, $sql);
+            if(!$temp_res1) {
+                $conn-> close();
+                return array("MESSAGE" => "407");
+            }
+
+            // Now check if they are already friends.
+            $sql = "SELECT * FROM Friendship WHERE username = '". $current_user . "' AND friend = '". $row[2] . "';";
+
+            $temp_res2 = pg_query($conn, $sql);
+            if(!$temp_res2) {
+                $conn-> close();
+                return array("MESSAGE" => "407");
+            }
+
+            if(pg_num_rows($temp_res1) == 0 && pg_num_rows($temp_res2) == 0) {
+                $count = $count + 1;
+                $instancia = array("FIRST_NAME" => $row[0],
+                                   "LAST_NAME" => $row[1],
+                                   "USERNAME" => $row[2],
+                                   "EMAIL" => $row[3]);
+               array_push($instancias, json_encode($instancia));
+            }
+        }
+    }
+    pg_close($conn);
+    return array("MESSAGE" => "SUCCESS", "COUNT"=>$count, "DATA" => json_encode($instancias));
+
+}
 /*
 
 function attemptPostcomment($id, $text, $username) {
@@ -318,70 +390,6 @@ function attemptPostcomment($id, $text, $username) {
 }
 
 
-function attemptSearch($username, $firstName, $lastName, $email) {
-    $current_user = $_SESSION['Username'];
-
-    $conn = databaseConnection();
-
-    if($conn == null) {
-        return array("MESSAGE" => "500");
-    }
-
-    $sql = "SELECT fName, lName, userName FROM Users WHERE ";
-
-    if($username != "") {
-        $sql = $sql . " userName = '$username';";
-    } else if($firstName != "" && $lastName != "") {
-        $sql = $sql. "fName = '$firstName' AND lName = '$lastName';";
-    } else if ($firstName != "") {
-        $sql = $sql. "fName = '$firstName' ;";
-    } else if ($lastName != "") {
-        $sql = $sql. "lName = '$lastName' ;";
-    } else {
-        $sql = $sql. "email = '$email' ;";
-    }
-
-    $result = $conn->query($sql);
-
-    if(!$result) {
-        pg_close($conn);
-        return array("MESSAGE" => "407");   
-    }
-
-    $newHtml = "";
-    while($row = $result->fetch_assoc()) {
-        if($row['userName'] != $current_user){
-            $request = "<input type='button' id=".$row["userName"]." class='friendRequest' value = 'Send Friend Request'> ";
-            // Check for already existing friend requests
-            $sql = "SELECT * FROM FriendRequests WHERE (person = '".$row['userName'] . "' AND requester = '". $current_user . "') OR (
-                person = '".$current_user. "' AND requester = '". $row['userName'] . "');";
-
-            $temp_res1 = $conn->query($sql);
-            if(!$temp_res1) {
-                $conn-> close();
-                return array("MESSAGE" => "407");
-            }
-
-            // Now check if they are already friends.
-            $sql = "SELECT * FROM Friendship WHERE person = '". $current_user . "' AND friend = '". $row['userName'] . "';";
-
-            $temp_res2 = $conn->query($sql);
-            if(!$temp_res2) {
-                $conn-> close();
-                return array("MESSAGE" => "407");
-            }
-
-            if($temp_res1->num_rows == 0 && $temp_res2->num_rows == 0) {
-                $temp = '<tr> <td>'. $row["fName"] . "</td><td>" .$row["lName"]. "</td><td> ".$row["userName"]."</td> <td>
-                    ". $request . " </td> </tr>";
-                $newHtml = $newHtml . $temp;
-            }
-        }
-    }
-    pg_close($conn);
-    return array("MESSAGE" => "SUCCESS", "DATA" => $newHtml);
-
-}
 
 function attemptGetProfile() {
     $current_user = $_SESSION['Username'];

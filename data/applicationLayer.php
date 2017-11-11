@@ -38,10 +38,10 @@ case "ADDTASK":
 case "ADDPROJECT":
     modifyFunction(false, true);
     break;
-/*        case "SEARCH":
+case "SEARCH":
                 searchFunction();
                 break;
-        case "PROFILE":
+/*        case "PROFILE":
                 profileFunction();
                 break;
         case "GETFRIENDREQUESTS":
@@ -205,6 +205,17 @@ function modifyFunction($task, $new) {
    echo json_encode(array("RESULT" => "OK"));
 }
 
+    function searchFunction() {
+      checkCredentials();
+      $result = attemptSearch();
+
+        if($result["MESSAGE"] != "SUCCESS") {
+            genericErrorFunction($result["MESSAGE"]);
+        }
+
+        $response = array("RESULT" => "OK", "DATA" => $result["DATA"], "COUNT" => $result["COUNT"]);
+        echo json_encode($response);
+    }
 /*
     function sendCommentFunction() {
         session_start();
@@ -242,26 +253,6 @@ function modifyFunction($task, $new) {
 
     }
 
-    function searchFunction() {
-        session_start();
-        if(!isset($_SESSION['Username']) || $_SESSION['Username'] == '') {
-        genericErrorFunction("403");
-        }
-
-        $username = $_POST["username"];
-        $firstName = $_POST["first_name"];
-        $lastName = $_POST["last_name"];
-        $email = $_POST["email"];
-
-        $result = attemptSearch($username, $firstName, $lastName, $email);
-
-        if($result["MESSAGE"] != "SUCCESS") {
-            genericErrorFunction($result["MESSAGE"]);
-        }
-
-        $response = array("RESULT" => "OK", "DATA" => $result["DATA"]);
-        echo json_encode($response);
-    }
 
     function profileFunction() {
         session_start();
