@@ -30,9 +30,9 @@
         <img id="unicornio" src="unicornio.png" alt=""> 
         
         <ul id="nav" class="right hide-on-med-and-down cyan">
-        <li><a>New Task</a></li>
-        <li><a>Agenda</a></li>
-        <li><a>Calendar</a></li>
+        <li><a href="Add.html">New Task</a></li>
+        <li><a href="agenda.php">Agenda</a></li>
+        <li><a href="calendar.php">Calendar</a></li>
         <li id = "logout"><a>Logout</a></li>
         </ul>
     </div>
