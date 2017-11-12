@@ -40,9 +40,16 @@ $(document).ready(function() {
 //Create tasks
 $("#modal1").click(function (){
     $("#createTask").modal();
-    $( "#startdate" ).datepicker();
-    $( "#deadline" ).datepicker();
+   // $( "#startdate" ).datepicker();
+    //$( "#deadline" ).datepicker();
     $("#createTask").openModal();
+});
+
+$('.datepicker').pickadate({
+  format: 'mm/dd/yyyy',
+  selectMonths: true,
+  selectYears: 15,
+  max: today,
 });
 
 
