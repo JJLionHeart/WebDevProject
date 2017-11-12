@@ -126,12 +126,11 @@ $.ajax({
 
 //Add new task
 $("#submit-task").click(addTask);
-//$("submit-project").click(addProject);
+$("#submit-project").click(addProject);
 });
 
 
 function addTask(){
-    console.log("hello adding task");
     var content = $("#task-name").val();
     var deadline = $("#task-deadline").val();
     var start_date = $("#task-startdate").val();
@@ -147,7 +146,8 @@ function addTask(){
         },
         ContentType: "application/json",
         success: function(data) {
-            console.log("Task deleted");
+            alert("Task created.");
+            location.reload();
         },
         error: function(data) {
            alert("An error ocurred while getting Tasks: "+data.statusText);
@@ -171,6 +171,33 @@ function deleteTask(taskId) {
         ContentType: "application/json",
         success: function(data) {
             console.log("Task deleted");
+        },
+        error: function(data) {
+           alert("An error ocurred while getting Tasks: "+data.statusText);
+        }
+     });
+}
+
+function addProject(){
+    var content = $("#project-name").val();
+    var description = $("#project-description").val();
+    var deadline = $("#project-deadline").val();
+    var start_date = $("#project-startdate").val();
+    $.ajax({
+        url : "./data/applicationLayer.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            "action" : "ADDPROJECT",
+            "NAME" : content,
+            "DESCRIPTION" : description,
+            "START_DATE" : start_date,
+            "DEADLINE" : deadline
+        },
+        ContentType: "application/json",
+        success: function(data) {
+            alert("Project created.");
+            location.reload();
         },
         error: function(data) {
            alert("An error ocurred while getting Tasks: "+data.statusText);
