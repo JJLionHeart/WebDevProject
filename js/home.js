@@ -131,6 +131,7 @@ $("#submit-task").click(addTask);
 
 
 function addTask(){
+    console.log("hello adding task");
     var content = $("#task-name");
     var deadline = $("#task-deadline");
     var start_date = $("#task-startdate");
