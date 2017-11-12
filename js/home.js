@@ -51,7 +51,7 @@ $.ajax({
        for(var i = 0; i < data.NUM_ROWS; i++) {
             var task = jQuery.parseJSON(jsons[i]);
             newHTML += "<li id="+ task.taskId + " class= 'collection-item' style='touch-action: pan-y;'>";
-            newHTML += "<input id=individual-task"+task.taskId+" type='checkbox'> <label for=individual-task"+i+">"+task.content+"</br>"+"<a href='#!' class='secondary-content'>";
+            newHTML += "<input id=individual-task"+task.taskId+" type='checkbox'> <label for=individual-task"+task.taskId+">"+task.content+"</br>"+"<a href='#!' class='secondary-content'>";
             newHTML += "<span class='ultra-small right'>" + task.deadline +"</span></a></label></li>";
             $("#tasks").append(newHTML);
        }
@@ -76,7 +76,7 @@ $.ajax({
          var project = jQuery.parseJSON(jsons[i]);
          console.log(project);
          newHTML += "<li id="+ project.project_id + " class= 'collection-item' style='touch-action: pan-y;'>";
-         newHTML += "<input id=project-tasks"+project_id+" type='checkbox'> <label for=individual-task"+i+">"+project.name+"</br>"+"<a href='#!' class='secondary-content'>";
+         newHTML += "<input id=project-tasks"+project.project_id+" type='checkbox'> <label for=project-tasks"+project.project_id+">"+project.name+"</br>"+"<a href='#!' class='secondary-content'>";
          newHTML += "<span class='ultra-small right'>" + project.description +"</span></a></label></li>";
          $("#tasks").append(newHTML);
     }
