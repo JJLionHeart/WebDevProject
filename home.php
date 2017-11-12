@@ -41,20 +41,27 @@
     <div id="individual-sidebar" class="col s6">
         <div class="collection with-header deep-purple white-text center">
                 <h4 class="task-card-title">Your Tasks for today</h4>
-                <a class="btn-floating btn-large waves-effect waves-light orange center">Add New Task</a>
         </div>
+        <div  id="newTask-btn" class ="collection">
+            <a class="waves-effect waves-light deep-purple btn right offset-s1">Add New Task</a>
+        </div>
+          
         <ul id="tasks" class="collection">
            
         </ul>
     </div>
 
     <div id="projects-sidebar" class="col s6">
-            <ul id="task-card" class="collection with-header">
-                    <li class="collection with-header orange white-text center">
-                        <h4 class="task-card-title">Your Projects</h4>
-                    </li>
-            </ul>
+        <div class="collection with-header orange white-text center">
+                <h4 class="task-card-title">Your Projects</h4>
         </div>
+        <div  id="newTask-btn" class ="collection">
+            <a class="waves-effect waves-light orange btn right offset-s1">Add Project</a>
+        </div>
+            
+        <ul id="projects" class="collection">
+        </ul> 
+    </div>  
 </div>
 			
 	<script type="text/javascript" src="js/jquery.js"></script>
