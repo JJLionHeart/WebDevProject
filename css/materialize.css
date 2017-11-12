@@ -6453,11 +6453,11 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
 }
 
 .input-field input[type=search]:focus {
-  background-color: #FFE082;
+  background-color: #4DD0E1;
+  color:#FFFFFF;
   border: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
-  color: #444;
 }
 
 .input-field input[type=search]:focus + label i,
