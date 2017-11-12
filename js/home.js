@@ -60,7 +60,7 @@ $.ajax({
       alert("An error ocurred while getting Tasks: "+data.statusText);
    }
 });
-
+console.log("hello");
 $.ajax({
    url : "./data/applicationLayer.php",
    type: "POST",
@@ -70,10 +70,11 @@ $.ajax({
    },
    ContentType: "application/json",
    success: function(data) {
-    var jsons =jQuery.parseJSON(data.DATA);
+    var js =jQuery.parseJSON(data.DATA);
     var newHTML = "";
     for(var i = 0; i < data.NUM_ROWS; i++) {
-         var project = jQuery.parseJSON(jsons[i]);
+         var project = jQuery.parseJSON(js[i]);
+         console.log("holaaaa");
          console.log(data.NUM_ROWS);
          console.log(project);
 
