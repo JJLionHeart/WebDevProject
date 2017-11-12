@@ -27,7 +27,7 @@
 					<div class="input-field col s12">
 						<!--<i class="mdi-social-person-outline prefix"> </i>   Add the image-->
 						<input id="username-login" type="text">
-						<label for="username-logim" class="center-align deep-purple-text">Username</label>
+						<label for="username-login" class="center-align deep-purple-text">Username</label>
 					</div>
 				</div>
 				<div class="row margin">
