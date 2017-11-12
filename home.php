@@ -43,7 +43,6 @@
         <div  id="newTask-btn" class ="collection">
             <!-- Modal Trigger -->
             <button id="modal1" class="waves-effect waves-light btn modal-trigger deep-purple right offset-s1" data-target="createTask">Add New Task</button>
-           <!-- <a class="waves-effect waves-light deep-purple btn modal-trigger right offset-s1" href="#createTask">Add New Task</a> -->
 
             <!-- Modal Structure -->
             <div id="createTask" class="modal">
@@ -56,15 +55,15 @@
                     <div class="row">
                         <form>
                             <p>Title<br/>
-                                <input id="firstName" type="text">
+                                <input id="task-name" type="text">
                             </p>
 
                             <p>Start Date<br/>
-                                <input type="text" id="startdate" class="datepicker">      
+                                <input type="text" id="task-startdate" class="datepicker">      
                             </p>
 
                             <p>Deadline<br/>
-                                <input type="text" id="deadline" class="datepicker">  
+                                <input type="text" id="task-deadline" class="datepicker">  
                             </p>
                         </form>
                     </div>
@@ -88,7 +87,6 @@
         <div  id="newTask-btn" class ="collection">
             <!-- Modal Trigger -->
             <button id="modal2" class="waves-effect waves-light btn modal-trigger orange right offset-s1" data-target="createProject">Add Project</button>
-           <!-- <a class="waves-effect waves-light deep-purple btn modal-trigger right offset-s1" href="#createTask">Add New Task</a> -->
 
             <!-- Modal Structure -->
             <div id="createProject" class="modal">
@@ -101,27 +99,29 @@
                     <div class="row">
                         <form>
                             <p>Title<br/>
-                                <input id="firstName" type="text">
+                                <input id="project-name" type="text">
                             </p>
                             
-                            <textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>
-                            <label for="textarea1">Description</label>
+                            <p>Description<br/>
+                            <textarea id="project-description" class="materialize-textarea" data-length="120"></textarea>
+                            </p>
 
                             <p>Start Date<br/>
-                                <input type="text" id="startdate" class="datepicker">      
+                                <input type="text" id="project-startdate" class="datepicker">      
                             </p>
 
                             <p>Deadline<br/>
-                                <input type="text" id="deadline" class="datepicker">  
+                                <input type="text" id="project-deadline" class="datepicker">  
                             </p>
 
+                            <p>Select team members<br/>
                             <select multiple>
-                                <option value="" disabled selected>Choose your option</option>
+                                <option value="">Choose your option</option>
                                 <option value="1">Option 1</option>
                                 <option value="2">Option 2</option>
                                 <option value="3">Option 3</option>
                             </select>
-                            <label>Select members of the team</label>
+                            </p>
                         </form>
                     </div>
                 </div>

@@ -40,15 +40,11 @@ $(document).ready(function() {
 //Create tasks
 $("#modal1").click(function (){
     $("#createTask").modal();
-   // $( "#startdate" ).datepicker();
-    //$( "#deadline" ).datepicker();
     $("#createTask").openModal();
 });
 
 $("#modal2").click(function (){
     $("#createProject").modal();
-   // $( "#startdate" ).datepicker();
-    //$( "#deadline" ).datepicker();
     $("#createProject").openModal();
 });
 
