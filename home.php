@@ -53,19 +53,16 @@
                         <form>
                             <legend>Create Task</legend>
                             <br>
-                            <p>First Name<br/>
+                            <p>Title<br/>
                                 <input id="firstName" type="text">
-                                <span id="errorFirstName"></span>
                             </p>
 
-                            <p>Last Name<br/>
-                                <input id="lastName" type="text">
-                                <span id="errorLastName"></span>
+                            <p>Start Date<br/>
+                                <input type="text" id="startdate" class="datepicker">      
                             </p>
 
-                            <p>Username<br/>
-                                <input id="userName" type="text">
-                                <span id="errorUserName"></span>
+                            <p>Deadline<br/>
+                                <input type="text" id="deadline" class="datepicker">  
                             </p>
 
                             <p>Email<br/>
