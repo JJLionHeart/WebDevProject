@@ -76,8 +76,9 @@ $.ajax({
          var project = jQuery.parseJSON(jsons[i]);
          console.log("Hola");
          console.log(project);
-         newHTML += "<li id="+ project.project_id + " class= 'collection-item' style='touch-action: pan-y;'>";
-         newHTML += "<input id=project-tasks"+project.project_id+" type='checkbox'> <label for=project-tasks"+project.project_id+">"+project.name+"</br>"+"<a href='#!' class='secondary-content'>";
+
+         newHTML += "<li id="+ project.id+ " class= 'collection-item' style='touch-action: pan-y;'>";
+         newHTML += "<input id=project-tasks"+project.id + " type='checkbox'> <label for=project-tasks"+project.id+">"+project.name+"</br>"+"<a href='#!' class='secondary-content'>";
          newHTML += "<span class='ultra-small right'>" + project.description +"</span></a></label></li>";
          $("#projects").append(newHTML);
     }
