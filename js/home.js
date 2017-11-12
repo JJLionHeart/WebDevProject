@@ -1,4 +1,3 @@
-//$("#newTask-btn").click("on", createTask);
 $(document).ready(function() {
     var colors = ['lightgrey', 'lightblue', 'lightgreen'];
     MaterializeCollectionActions.configureActions($('#tasks'), [

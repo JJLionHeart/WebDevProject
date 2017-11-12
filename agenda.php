@@ -13,11 +13,20 @@
 </head>
 
 <body>
-
     <nav>
         <div class="nav-wrapper cyan">
             <a id="brand-logo">Space Unicorns</a>
             <img id="unicornio" src="unicornio.png" alt=""> 
+
+        <div class="nav-wrapper">
+        <form>
+            <div class="input-field">
+                <input id="search" type="search" required>
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+            </div>
+        </form>
+        </div>
             
             <ul id="nav" class="right hide-on-med-and-down cyan">
             <li><a href="agenda.php">Agenda</a></li>
@@ -30,9 +39,9 @@
 <div class="row">
         <div class= "contacts">
         <div class="collection with-header deep-purple white-text center">
-                <h4 class="task-card-title">Your Contacts</h4>
+                <h4 class="task-card-title">Contact List</h4>
         </div>
-        <ul class="collection">
+        <ul id="agenda" class="collection">
             <li class="collection-item avatar">
             <img src="user.png" alt="" class="circle">
             <span class="title">Title</span>
@@ -55,7 +64,8 @@
 </div>
 			
 	<script type="text/javascript" src="js/jquery.js"></script>
-	<script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/agenda.js"></script>
 </body>
 
 </html>
