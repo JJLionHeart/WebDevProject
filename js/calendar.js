@@ -21,6 +21,7 @@ $(document).ready(function() {
                     color:"#673ab7",
                     end: task.deadline
                 })
+                console.log("evento agregado");
             }
         },
         error: function(data) {
