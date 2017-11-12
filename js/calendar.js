@@ -52,7 +52,7 @@ $(document).ready(function() {
             }
         },
         error: function(data) {
-           alert("An error ocurred while getting Tasks: "+data.statusText);
+           alert("An error ocurred while getting Tasks: "+ data.statusText);
         }
      });
     
@@ -72,8 +72,7 @@ $(document).ready(function() {
         editable: false,
         minTime: '07:30:00', // Start time for the calendar
         maxTime: '22:00:00', // End time for the calendar
-
-        events
+        events : events
     });
     
 });
