@@ -14,6 +14,7 @@ $(document).ready(function() {
             var newHTML = "";
             for(var i = 0; i < data.NUM_ROWS; i++) {
                 var task = jQuery.parseJSON(jsons[i]);
+                console.log(task);
                 events.push({
                     title: task.content,
                     start: task.start_date, //No debe de incluir la hora
