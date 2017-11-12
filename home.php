@@ -49,7 +49,31 @@
             <!-- Modal Structure -->
             <div id="createTask" class="modal">
                 <div class="modal-content">
-                    <h1>HELOO</h1>
+                    <div class="row">
+                        <form>
+                            <legend>Create Task</legend>
+                            <br>
+                            <p>First Name<br/>
+                                <input id="firstName" type="text">
+                                <span id="errorFirstName"></span>
+                            </p>
+
+                            <p>Last Name<br/>
+                                <input id="lastName" type="text">
+                                <span id="errorLastName"></span>
+                            </p>
+
+                            <p>Username<br/>
+                                <input id="userName" type="text">
+                                <span id="errorUserName"></span>
+                            </p>
+
+                            <p>Email<br/>
+                                <input id="email" type="text">
+                                <span id="errorEmail"></span>
+                            </p>
+                        </form>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Save</a>
