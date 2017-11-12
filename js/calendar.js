@@ -21,7 +21,7 @@ $(document).ready(function() {
                     color:"#673ab7",
                     end: task.deadline
                 })
-                console.log("evento agregado");
+                console.log(events);
             }
         },
         error: function(data) {
@@ -64,7 +64,7 @@ $(document).ready(function() {
         },
         defaultDate: '2017-11-13',
         navLinks: true, // can click day/week names to navigate views
-        eventLimit: true, // allow "more" link when too many events
+        eventLimit: false, // allow "more" link when too many events
         handleWindowResize: true,
         weekends: false, // Hide weekends
         defaultView: 'month', // Only show week view
