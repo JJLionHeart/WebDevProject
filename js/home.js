@@ -53,8 +53,8 @@ $.ajax({
             newHTML += "<li id="+ task.id + " class= 'collection-item' style='touch-action: pan-y;'>";
             newHTML += "<input id=individual-task"+task.id+" type='checkbox'> <label for=individual-task"+task.id+">"+task.content+"</br>"+"<a href='#!' class='secondary-content'>";
             newHTML += "<span class='ultra-small right'>" + task.deadline +"</span></a></label></li>";
-            $("#tasks").append(newHTML);
        }
+       $("#tasks").append(newHTML);
    },
    error: function(data) {
       alert("An error ocurred while getting Tasks: "+data.statusText);
@@ -82,8 +82,9 @@ $.ajax({
          newHTML += "<li id="+ project.id+ " class= 'collection-item' style='touch-action: pan-y;'>";
          newHTML += "<input id=project-tasks"+project.id + " type='checkbox'> <label for=project-tasks"+project.id+">"+project.name+"</br>"+"<a href='#!' class='secondary-content'>";
          newHTML += "<span class='ultra-small right'>" + project.description +"</span></a></label></li>";
-         $("#projects").append(newHTML);
+         
     }
+    $("#projects").append(newHTML);
 
        // La idea es exactamente igual que con tasks
        // Data contiene dos campos utiles
