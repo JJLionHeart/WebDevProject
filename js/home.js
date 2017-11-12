@@ -41,13 +41,10 @@ $(document).ready(function() {
 $("#modal1").click(function (){
     $("#createTask").modal();
     $("#createTask").openModal();
-});
-
-//date picker
-$( function() {
     $( "#startdate" ).datepicker();
     $( "#deadline" ).datepicker();
-  } );
+});
+
 
 $("#logout").click(function() {
         var jsonToSend = {
