@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var events = [];
+    var myevents = [];
     $.ajax({
         url : "./data/applicationLayer.php",
         type: "POST",
@@ -15,7 +15,7 @@ $(document).ready(function() {
             for(var i = 0; i < data.NUM_ROWS; i++) {
                 var task = jQuery.parseJSON(jsons[i]);
                 console.log(task);
-                events.push({
+                myevents.push({
                     title: task.content,
                     start: task.start_date, //No debe de incluir la hora
                     color:"#673ab7",
@@ -43,7 +43,7 @@ $(document).ready(function() {
             var newHTML = "";
             for(var i = 0; i < data.NUM_ROWS; i++) {
                 var task = jQuery.parseJSON(jsons[i]);
-                events.push({
+                myevents.push({
                     title: task.name,
                     start: task.start_date, //No debe de incluir la hora
                     color:"#ff9800",
@@ -72,7 +72,7 @@ $(document).ready(function() {
         editable: false,
         minTime: '07:30:00', // Start time for the calendar
         maxTime: '22:00:00', // End time for the calendar
-        events : events
+        events : myevents
     });
     
 });
