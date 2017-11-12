@@ -50,7 +50,7 @@
                 <div class="modal-content">
                     <nav>
                         <div class="nav-wrapper cyan">
-                        <legend>Create Task</legend>
+                        <h3>Create Task</h3>
                         </div>
                     </nav>
                     <div class="row">
@@ -84,8 +84,51 @@
         <div class="collection with-header orange white-text center">
                 <h4 class="task-card-title">Your Projects</h4>
         </div>
+        
         <div  id="newTask-btn" class ="collection">
-            <a class="waves-effect waves-light orange btn right offset-s1">Add Project</a>
+            <!-- Modal Trigger -->
+            <button id="modal2" class="waves-effect waves-light btn modal-trigger orange right offset-s1" data-target="createProject">Add Project</button>
+           <!-- <a class="waves-effect waves-light deep-purple btn modal-trigger right offset-s1" href="#createTask">Add New Task</a> -->
+
+            <!-- Modal Structure -->
+            <div id="createProject" class="modal">
+                <div class="modal-content">
+                    <nav>
+                        <div class="nav-wrapper cyan">
+                        <h3>Create Project</h3>
+                        </div>
+                    </nav>
+                    <div class="row">
+                        <form>
+                            <p>Title<br/>
+                                <input id="firstName" type="text">
+                            </p>
+                            
+                            <textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>
+                            <label for="textarea1">Description</label>
+
+                            <p>Start Date<br/>
+                                <input type="text" id="startdate" class="datepicker">      
+                            </p>
+
+                            <p>Deadline<br/>
+                                <input type="text" id="deadline" class="datepicker">  
+                            </p>
+
+                            <select multiple>
+                                <option value="" disabled selected>Choose your option</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                            <label>Select members of the team</label>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Save</a>
+                </div>
+            </div>
         </div>
             
         <ul id="projects" class="collection">

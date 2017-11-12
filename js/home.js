@@ -40,6 +40,7 @@ $(document).ready(function() {
 //Create tasks
 $("#modal1").click(function (){
     $("#createTask").modal();
+    $("#createProject").modal();
    // $( "#startdate" ).datepicker();
     //$( "#deadline" ).datepicker();
     $("#createTask").openModal();
