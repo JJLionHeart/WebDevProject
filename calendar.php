@@ -20,16 +20,19 @@
 <script src='js/calendar.js'></script>	
 </head>
 <body>
-	<nav>
-		<div class="nav-wrapper deep-purple2">
-			<a href="#" class="brand-logo">Logo</a>
-			<ul id="nav-mobile" class="right hide-on-med-and-down deep-purple2">
-			<li><a href="home.php">Home</a></li>
-			<li><a href="agenda.php">Agenda</a></li>
-			<li id = "logout"><a>Logout</a></li>
-			</ul>
-		</div>
-	</nav>
+<nav>
+    <div class="nav-wrapper cyan">
+        <a id="brand-logo">Space Unicorns</a>
+        <img id="unicornio" src="unicornio.png" alt=""> 
+        
+        <ul id="nav" class="right hide-on-med-and-down cyan">
+        <li><a href="agenda.php">Agenda</a></li>
+        <li><a href="home.php">Home</a></li>
+        <li id = "logout"><a>Logout</a></li>
+        </ul>
+    </div>
+</nav>
+	
 	<div class="container">
 		<div class="section">
 			<div id='calendar'></div>
