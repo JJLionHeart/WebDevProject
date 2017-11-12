@@ -57,7 +57,7 @@
                             </p>
 
                             <p>Start Date<br/>
-                                <input type="text" id="startdate" class="datepicker">      
+                                <input type="text" id="startdate" class="date">      
                             </p>
 
                             <p>Deadline<br/>
