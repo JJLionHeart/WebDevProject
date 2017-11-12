@@ -16,8 +16,9 @@ $(document).ready(function() {
                 var task = jQuery.parseJSON(jsons[i]);
                 events.push({
                     title: task.content,
-                    start: task.deadline, //No debe de incluir la hora
-                    color:"#673ab7"
+                    start: task.start_date, //No debe de incluir la hora
+                    color:"#673ab7",
+                    end: task.deadline
                 })
             }
         },
@@ -42,8 +43,9 @@ $(document).ready(function() {
                 var task = jQuery.parseJSON(jsons[i]);
                 events.push({
                     title: task.name,
-                    start: task.deadline, //No debe de incluir la hora
-                    color:"#ff9800"
+                    start: task.start_date, //No debe de incluir la hora
+                    color:"#ff9800",
+                    end: task.deadline
                 })
             }
         },

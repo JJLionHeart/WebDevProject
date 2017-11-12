@@ -1,4 +1,4 @@
-$("#newTask-btn").click("on", createTask);
+//$("#newTask-btn").click("on", createTask);
 
 $(document).ready(function() {
     var colors = ['lightgrey', 'lightblue', 'lightgreen'];
