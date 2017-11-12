@@ -126,7 +126,7 @@ $.ajax({
 
 //Add new task
 $("submit-task").click(addTask);
-$("submit-project").click(addProject);
+//$("submit-project").click(addProject);
 });
 
 
