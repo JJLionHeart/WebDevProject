@@ -70,7 +70,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Save</a>
+                    <a href="#!" class="modal-action modal-close waves-effect waves-cyan btn-flat">Save</a>
                 </div>
             </div>
         </div>
@@ -126,7 +126,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Save</a>
+                    <a href="#!" class="modal-action modal-close waves-effect waves-cyan btn-flat">Save</a>
                 </div>
             </div>
         </div>
