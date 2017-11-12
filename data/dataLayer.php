@@ -96,7 +96,7 @@ function attemptGetTasks() {
 
     # Get the username out of this session.
     $username = $_SESSION['Username'];
-    $sql = "SELECT content, deadline, start_date FROM Tasks WHERE username = '$username';";
+    $sql = "SELECT content, deadline, start_date, taskid FROM Tasks WHERE username = '$username';";
 
 
     $result = pg_query($conn, $sql);
@@ -117,7 +117,8 @@ function attemptGetTasks() {
     while ($row = pg_fetch_row($result)) {
         $instancia = array("content" => $row[0],
             "deadline"=> $row[1],
-            "start_date" => $row[2]);
+            "start_date" => $row[2],
+            "id" => $row[3]);
         array_push($instancias, json_encode($instancia));
     }
 
