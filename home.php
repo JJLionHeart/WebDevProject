@@ -19,10 +19,10 @@
 	<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="css/mystyle.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link rel="stylesheet" href="css/materialize-collection-actions-1.0.0.min.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
+    <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script src="js/materialize-collection-actions-1.0.0.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
+    <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css"
+    rel = "stylesheet">
 
 </head>
 
