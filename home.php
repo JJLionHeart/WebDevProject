@@ -43,7 +43,7 @@
         </div>
         <div  id="newTask-btn" class ="collection">
             <!-- Modal Trigger -->
-            <button class="waves-effect waves-light btn modal-trigger deep-purple right offset-s1" data-target="createTask">Add New Task</button>
+            <button id="modal1" class="waves-effect waves-light btn modal-trigger deep-purple right offset-s1" data-target="createTask">Add New Task</button>
            <!-- <a class="waves-effect waves-light deep-purple btn modal-trigger right offset-s1" href="#createTask">Add New Task</a> -->
 
             <!-- Modal Structure -->

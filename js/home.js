@@ -37,7 +37,7 @@ $(document).ready(function() {
         }
     ]);
 
-$('.modal-trigger').modal();
+$('#modal1').modal();
 
 $("#logout").click(function() {
         var jsonToSend = {
