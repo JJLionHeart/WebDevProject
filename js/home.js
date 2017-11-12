@@ -37,8 +37,12 @@ $(document).ready(function() {
         }
     ]);
 
-$('#modal1').modal();
-$("#createTask").openModal();
+//Create tasks
+$("#modal1").click(function (){
+    $("#createTask").modal();
+    $("#createTask").openModal();
+});
+
 
 $("#logout").click(function() {
         var jsonToSend = {
