@@ -74,11 +74,12 @@ $.ajax({
     var newHTML = "";
     for(var i = 0; i < data.NUM_ROWS; i++) {
          var project = jQuery.parseJSON(jsons[i]);
+         console.log("Hola");
          console.log(project);
          newHTML += "<li id="+ project.project_id + " class= 'collection-item' style='touch-action: pan-y;'>";
          newHTML += "<input id=project-tasks"+project.project_id+" type='checkbox'> <label for=project-tasks"+project.project_id+">"+project.name+"</br>"+"<a href='#!' class='secondary-content'>";
          newHTML += "<span class='ultra-small right'>" + project.description +"</span></a></label></li>";
-         $("#tasks").append(newHTML);
+         $("#projects").append(newHTML);
     }
 
        // La idea es exactamente igual que con tasks
