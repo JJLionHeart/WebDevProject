@@ -48,26 +48,24 @@
             <!-- Modal Structure -->
             <div id="createTask" class="modal">
                 <div class="modal-content">
+                    <nav>
+                        <div class="nav-wrapper cyan">
+                        <legend>Create Task</legend>
+                        </div>
+                    </nav>
                     <div class="row">
                         <form>
-                            <nav class="top-nav">
-                                <div class="nav-wrapper cyan">
-                                    <legend>Create Task</legend>
-                                    <br>
-                                    <p>Title<br/>
-                                        <input id="firstName" type="text">
-                                    </p>
+                            <p>Title<br/>
+                                <input id="firstName" type="text">
+                            </p>
 
-                                    <p>Start Date<br/>
-                                        <input type="text" id="startdate" class="datepicker">      
-                                    </p>
+                            <p>Start Date<br/>
+                                <input type="text" id="startdate" class="datepicker">      
+                            </p>
 
-                                    <p>Deadline<br/>
-                                        <input type="text" id="deadline" class="datepicker">  
-                                    </p>
-
-                            </div>
-                        </nav>
+                            <p>Deadline<br/>
+                                <input type="text" id="deadline" class="datepicker">  
+                            </p>
                         </form>
                     </div>
                 </div>
