@@ -40,34 +40,28 @@
 <div class="row">
     <div id="individual-sidebar" class="col s6">
         <div class="collection with-header deep-purple white-text center">
-                <h4 class="task-card-title">Your Tasks for today <span><a class="btn-floating btn-large waves-effect waves-light orange center">
-                        <i class="material-icons">add</i>
-                </a></span></h4>
+                <h4 class="task-card-title">Your Tasks for today</h4>
         </div>
+        <div  id="newTask-btn" class ="collection">
+            <a class="waves-effect waves-light deep-purple btn right offset-s1">Add New Task</a>
+        </div>
+          
         <ul id="tasks" class="collection">
            
         </ul>
     </div>
 
     <div id="projects-sidebar" class="col s6">
-            <ul id="task-card" class="collection with-header">
-                    <li class="collection with-header orange white-text center">
-                        <h4 class="task-card-title">Your Projects</h4>
-                    </li>
-                    <li id="project-tasks" class="collection-item dismissable" style="touch-action: pan-y;">
-                            <input id="task1" type="checkbox">
-                            <label for="task1" style="text-decoration: line-through;">Create Mobile App UI. <a href="#" class="secondary-content"><span class="ultra-small">Today</span></a>
-                            </label>
-                            <span class="task-cat teal">Mobile App</span>
-                    </li>
-                    <li class="collection-item dismissable" style="touch-action: pan-y;">
-                            <input id="task2" type="checkbox">
-                            <label for="task2" style="text-decoration: none;">Check the new API standerds. <a href="#" class="secondary-content"><span class="ultra-small">Monday</span></a>
-                            </label>
-                            <span class="task-cat purple">Web API</span>
-                    </li>
-            </ul>
+        <div class="collection with-header orange white-text center">
+                <h4 class="task-card-title">Your Projects</h4>
         </div>
+        <div  id="newTask-btn" class ="collection">
+            <a class="waves-effect waves-light orange btn right offset-s1">Add Project</a>
+        </div>
+            
+        <ul id="projects" class="collection">
+        </ul> 
+    </div>  
 </div>
 			
 	<script type="text/javascript" src="js/jquery.js"></script>
