@@ -275,7 +275,7 @@ function attemptModify($task, $new) {
             }
 
             $sql = "INSERT INTO UsersAndProjects(project_id, username) VALUES('$id', '$username');";
-                $result = pg_query($conn, $sql);
+            $result = pg_query($conn, $sql);
             if (!$result) {
                 return array("MESSAGE" => "407");
             }
@@ -303,7 +303,7 @@ function attemptSearch() {
     $firstName = $_POST["FIRST_NAME"];
     $lastName = $_POST["LAST_NAME"];
     $email = $_POST["EMAIL"];
-    
+
     if($conn == null) {
         return array("MESSAGE" => "500");
     }
@@ -328,20 +328,11 @@ function attemptSearch() {
         pg_close($conn);
         return array("MESSAGE" => "407");   
     }
-   
+
     $count = 0;
     $instancias = array();
     while($row = pg_fetch_row($result)) {
         if($row[2] != $current_user){
-            // Check for already existing friend requests
-            $sql = "SELECT * FROM FriendRequests WHERE (person = '".$row[2] . "' AND requester = '". $current_user . "') OR (
-                person = '".$current_user. "' AND requester = '". $row[2] . "');";
-
-            $temp_res1 = pg_query($conn, $sql);
-            if(!$temp_res1) {
-                $conn-> close();
-                return array("MESSAGE" => "407");
-            }
 
             // Now check if they are already friends.
             $sql = "SELECT * FROM Friendship WHERE username = '". $current_user . "' AND friend = '". $row[2] . "';";
@@ -352,13 +343,13 @@ function attemptSearch() {
                 return array("MESSAGE" => "407");
             }
 
-            if(pg_num_rows($temp_res1) == 0 && pg_num_rows($temp_res2) == 0) {
+            if(pg_num_rows($temp_res2) == 0) {
                 $count = $count + 1;
                 $instancia = array("FIRST_NAME" => $row[0],
-                                   "LAST_NAME" => $row[1],
-                                   "USERNAME" => $row[2],
-                                   "EMAIL" => $row[3]);
-               array_push($instancias, json_encode($instancia));
+                    "LAST_NAME" => $row[1],
+                    "USERNAME" => $row[2],
+                    "EMAIL" => $row[3]);
+                array_push($instancias, json_encode($instancia));
             }
         }
     }
@@ -366,30 +357,59 @@ function attemptSearch() {
     return array("MESSAGE" => "SUCCESS", "COUNT"=>$count, "DATA" => json_encode($instancias));
 
 }
-/*
 
-function attemptPostcomment($id, $text, $username) {
+function attemptFriendRequest($person){
     $conn = databaseConnection();
-
     if($conn == null) {
         return array("MESSAGE" => "500");
     }
 
+    $current_user = $_SESSION['Username'];
 
-    $sql = "INSERT INTO Comments(id, text, userName) VALUES('$id', '$text', '$username');";
-    $result = $conn->query($sql);
+    $sql = "INSERT INTO Friendship(friend, username) 
+        VALUES('$person', '$current_user');";
+    $result = pg_query($conn, $sql);
+
+    if(!$result) {
+        return array("MESSAGE" => "407");
+    }
+
+    return array("MESSAGE" => "SUCCESS");
+}
+
+function attemptGetFriendList() {
+    $conn = databaseConnection();
+    if($conn == null) {
+        return array("MESSAGE" => "500");
+    }
+
+    $current_user = $_SESSION['Username'];
+    $sql = "SELECT friend FROM Friendship WHERE username = '$current_user';";
+
+    $result = pg_query($conn, $sql);
 
     if(!$result) {
         pg_close($conn);
         return array("MESSAGE" => "407");
     }
 
-    pg_close($conn);
-    return array("MESSAGE" => "SUCCESS");
+    $count = pg_num_rows($result);
+    $instances = array();
+    while($row = pg_fetch_row($result)) {
+        $sql = "SELECT username, first_name, last_name, email FROM Users WHERE username = '".$row[0]."';";
+        $temp_res = pg_query($conn, $sql);
+
+        if(!$temp_res) {
+            return array("MESSAGE" => "407");
+        }
+        $row2 = pg_fetch_row($temp_res);
+        $instance = array("FIRST_NAME" => $row2[1], "USERNAME" => $row2[0], "LAST_NAME" => $row2[2], "EMAIL" => $row2[3]);
+        array_push($instances, json_encode($instance));
+    }
+    return array("MESSAGE" => "SUCCESS", "DATA" => json_encode($instances), "COUNT" => $count);
 
 }
-
-
+/*
 
 function attemptGetProfile() {
     $current_user = $_SESSION['Username'];
@@ -422,147 +442,5 @@ function attemptGetProfile() {
 
 }
 
-function attemptGetFriendRequests() {
-    $current_user = $_SESSION['Username'];
-    $conn = databaseConnection();
-    if($conn == null) {
-        return array("MESSAGE" => "500");
-    }
-
-    $sql = "SELECT * FROM FriendRequests WHERE person = '$current_user'"; 
-
-    $result = $conn->query($sql);
-
-    echo mysqli_error($conn);
-
-    if(!$result) {
-        return array("MESSAGE" => "407");
-    }
-
-    $newHtml = "";
-    while($row = $result->fetch_assoc()) {
-        $sql = "SELECT * FROM Users WHERE userName = '".$row["requester"]."';";
-        $temp_res = $conn->query($sql);
-
-        if(!$temp_res) {
-            return array("MESSAGE" => "407");
-        }
-        $row2 = $temp_res->fetch_assoc();
-        $temp = '<tr> <td>'. $row2["fName"] . "</td><td>" . $row2["lName"]. "</td><td> ". $row2["userName"]."</td> <td>
-            <input type='button' id=".$row2["userName"]." class='acceptRequest' value = 'Accept'>  </td> 
-            <td><input type='button' id=".$row2["userName"]." class='rejectRequest' value = 'Reject'> </td></tr>";
-        $newHtml = $newHtml . $temp;
-    }
-
-    $response = array("MESSAGE" => "SUCCESS", "DATA" => $newHtml);
-    pg_close($conn);
-    return $response;
-
-
-}
-
-function attemptFriendRequest($person){
-    $conn = databaseConnection();
-    if($conn == null) {
-        return array("MESSAGE" => "500");
-    }
-
-    $current_user = $_SESSION['Username'];
-
-    $sql = "INSERT INTO FriendRequests(person, requester) 
-        VALUES('$person', '$current_user');";
-    $result = $conn->query($sql);
-
-    if(!$result) {
-        return array("MESSAGE" => "407");
-    }
-
-    return array("MESSAGE" => "SUCCESS");
-}
-
-function attemptGetNumberRequests() {
-    $conn = databaseConnection();
-    if($conn == null) {
-        return array("MESSAGE" => "500");
-    }
-
-    $current_user = $_SESSION['Username'];
-
-    $sql = "SELECT * FROM FriendRequests WHERE person = '$current_user';";
-    $result = $conn->query($sql);
-
-    pg_close($conn);
-    if(!$result) {
-        return array("MESSAGE" => "407");
-    }
-    return array("MESSAGE" => "SUCCESS", "number" => $result->num_rows);
-
-
-}
-
-function attemptDeleteRequest($requester, $accepted) {
-    $conn = databaseConnection();
-    if($conn == null) {
-        return array("MESSAGE" => "500");
-    }
-
-    $current_user = $_SESSION['Username'];
-
-    $sql = "DELETE FROM FriendRequests WHERE person='$current_user' AND requester='$requester';";
-
-    $result = $conn->query($sql);
-
-    if(!$result) {
-       return array("MESSAGE" => "407");
-    }
-
-    if($accepted) {
-        $sql = "INSERT INTO Friendship(person, friend) VALUES('$current_user', '$requester');";
-        $result = $conn->query($sql);
-        if(!$result) {
-            return array("MESSAGE" => "407");
-        }
-
-        $sql = "INSERT INTO Friendship(person, friend) VALUES('$requester', '$current_user');";
-        $result = $conn->query($sql);
-        if(!$result) {
-            return array("MESSAGE" => "407");
-        }
-
-    }
-    return array("MESSAGE"=>"SUCCESS");
-}
-
-function attemptGetFriendList() {
-    $conn = databaseConnection();
-    if($conn == null) {
-        return array("MESSAGE" => "500");
-    }
-
-    $current_user = $_SESSION['Username'];
-    $sql = "SELECT * FROM Friendship WHERE person = '$current_user';";
-
-    $result = $conn->query($sql);
-
-    if(!$result) {
-        pg_close($conn);
-        return array("MESSAGE" => "407");
-    }
-
-    $newHtml = "";
-    while($row = $result->fetch_assoc()) {
-        $sql = "SELECT * FROM Users WHERE userName = '".$row["friend"]."';";
-        $temp_res = $conn->query($sql);
-
-        if(!$temp_res) {
-            return array("MESSAGE" => "407");
-        }
-        $row2 = $temp_res->fetch_assoc();
-        $temp = '<tr> <td>'. $row2["fName"] . "</td><td>" . $row2["lName"]. "</td><td> ". $row2["userName"]."</td></tr>";
-        $newHtml = $newHtml . $temp;
-    }
-    return array("MESSAGE" => "SUCCESS", "DATA" => $newHtml);
-
-}
  */
 ?>

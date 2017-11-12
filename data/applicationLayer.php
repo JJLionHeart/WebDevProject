@@ -39,8 +39,14 @@ case "ADDPROJECT":
     modifyFunction(false, true);
     break;
 case "SEARCH":
-                searchFunction();
-                break;
+    searchFunction();
+    break;
+case "FRIENDREQUEST":
+    friendRequest();
+    break;
+case "GETFRIENDLIST":
+    getFriendList();
+    break;
 /*        case "PROFILE":
                 profileFunction();
                 break;
@@ -50,17 +56,12 @@ case "SEARCH":
         case "NUMBERFRIENDREQS":
                 gettNumberFriendRequests();
                 break;
-        case "FRIENDREQUEST":
-                friendRequest();
-                break;
         case "ACCEPT":
                 delete_request(true);
                 break;
         case "REJECT":
                 delete_request(false);
                 break;
-        case "GETFRIENDLIST":
-                getFriendList();
 break;*/
 }
 
@@ -181,41 +182,67 @@ function getProjectsFunction() {
 // and a task, if we want to delete a task we just send a 
 // true to the function.
 function deleteFunction($task) {
-   checkCredentials();
-   $id = $_POST["ID"];
-   $result = attemptDelete($id, $task);
+    checkCredentials();
+    $id = $_POST["ID"];
+    $result = attemptDelete($id, $task);
 
-   if($result["MESSAGE"] != "SUCCESS") {
-      genericErrorFunction($result["MESSAGE"]);
-   }
+    if($result["MESSAGE"] != "SUCCESS") {
+        genericErrorFunction($result["MESSAGE"]);
+    }
 
-   $response = array("RESULT" => "OK");
-   echo json_encode($response);
+    $response = array("RESULT" => "OK");
+    echo json_encode($response);
 }
 
 function modifyFunction($task, $new) {
-   checkCredentials();
+    checkCredentials();
 
-   $result = attemptModify($task, $new);
+    $result = attemptModify($task, $new);
 
-   if($result["MESSAGE"] != "SUCCESS") {
-      genericErrorFunction($result["MESSAGE"]);
-   }
+    if($result["MESSAGE"] != "SUCCESS") {
+        genericErrorFunction($result["MESSAGE"]);
+    }
 
-   echo json_encode(array("RESULT" => "OK"));
+    echo json_encode(array("RESULT" => "OK"));
 }
 
-    function searchFunction() {
-      checkCredentials();
-      $result = attemptSearch();
+function searchFunction() {
+    checkCredentials();
+    $result = attemptSearch();
 
-        if($result["MESSAGE"] != "SUCCESS") {
+    if($result["MESSAGE"] != "SUCCESS") {
+        genericErrorFunction($result["MESSAGE"]);
+    }
+
+    $response = array("RESULT" => "OK", "DATA" => $result["DATA"], "COUNT" => $result["COUNT"]);
+    echo json_encode($response);
+}
+
+function friendRequest() {
+    checkCredentials();
+    $person = $_POST['PERSON'];
+    $result = attemptFriendRequest($person);
+
+    if($result["MESSAGE"] != "SUCCESS") {
+        genericErrorFunction($result["MESSAGE"]);
+    }
+
+    echo json_encode(array("RESULT"=> "OK"));
+
+}
+
+    function getFriendList() {
+        checkCredentials();
+        $result = attemptGetFriendList();
+
+        if($result['MESSAGE'] != "SUCCESS") {
             genericErrorFunction($result["MESSAGE"]);
         }
 
-        $response = array("RESULT" => "OK", "DATA" => $result["DATA"], "COUNT" => $result["COUNT"]);
-        echo json_encode($response);
-    }
+        echo json_encode(array("RESULT" => "OK", "DATA" => $result["DATA"], "COUNT" => $result["COUNT"]));
+
+
+}
 /*
     function sendCommentFunction() {
         session_start();
@@ -290,23 +317,6 @@ function modifyFunction($task, $new) {
         echo json_encode($response);
     }
 
-    function friendRequest() {
-        session_start();
-        if(!isset($_SESSION['Username']) || 
-            $_SESSION['Username'] == '') {
-            genericErrorFunction("403");
-        }
-        $person = $_POST['person'];
-        $result = attemptFriendRequest($person);
-
-        if($result["MESSAGE"] != "SUCCESS") {
-            genericErrorFunction($result["MESSAGE"]);
-        }
-
-        echo json_encode(array("RESULT"=> "OK"));
-
-
-    }
 
     function gettNumberFriendRequests() {
         session_start();
@@ -341,22 +351,5 @@ function modifyFunction($task, $new) {
 
         echo json_encode(array("RESULT" => "OK"));
     }
-
-    function getFriendList() {
-        session_start();
-        if(!isset($_SESSION['Username']) || 
-            $_SESSION['Username'] == '') {
-            genericErrorFunction("403");
-        }
-
-        $result = attemptGetFriendList();
-
-        if($result['MESSAGE'] != "SUCCESS") {
-            genericErrorFunction($result["MESSAGE"]);
-        }
-
-        echo json_encode(array("RESULT" => "OK", "DATA" => $result["DATA"]));
-
-
-}*/
+ */
 ?>

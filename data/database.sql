@@ -8,11 +8,6 @@ CREATE TABLE Friendship(username varchar(30) REFERENCES Users(username),
                         friend varchar(30) REFERENCES Users(username), 
                         PRIMARY KEY(username, friend));
 
-CREATE TABLE FriendRequests(person varchar(30) REFERENCES Users(username),
-    requester varchar(30) REFERENCES Users(username),
-    PRIMARY KEY(person, requester));
-
-
 CREATE TABLE Projects(project_id varchar(20) PRIMARY KEY, name varchar(50), 
                       description varchar(256), 
                       start_date DATE,
