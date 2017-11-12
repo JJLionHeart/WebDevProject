@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a id="submit-task" href="#!" class="modal-action modal-close waves-effect waves-cyan btn-flat">Save</a>
+                    <a id="submit-task" href="#!" class="modal-action modal-close waves-effect cyan btn-flat">Submit</a>
                 </div>
             </div>
         </div>
