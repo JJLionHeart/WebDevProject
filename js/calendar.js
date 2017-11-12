@@ -21,7 +21,7 @@ $(document).ready(function() {
                     color:"#673ab7",
                     end: task.deadline
                 })
-                console.log(events);
+                console.log(myevents);
             }
         },
         error: function(data) {
@@ -55,6 +55,8 @@ $(document).ready(function() {
            alert("An error ocurred while getting Tasks: "+ data.statusText);
         }
      });
+
+     console.log(myevents);
     
     $('#calendar').fullCalendar({
         header: {
@@ -64,7 +66,7 @@ $(document).ready(function() {
         },
         defaultDate: '2017-11-13',
         navLinks: true, // can click day/week names to navigate views
-        eventLimit: false, // allow "more" link when too many events
+        eventLimit: true, // allow "more" link when too many events
         handleWindowResize: true,
         weekends: false, // Hide weekends
         defaultView: 'month', // Only show week view
