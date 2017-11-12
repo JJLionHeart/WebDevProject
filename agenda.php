@@ -22,7 +22,7 @@
 
 <body>
     <nav>
-        <div class="nav-wrapper cyan">
+        <div class="nav-wrapper orange-web">
         <div class="row">
             <div class="col s4"> 
                 <a id="brand-logo">Space Unicorns</a>

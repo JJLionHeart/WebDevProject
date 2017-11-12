@@ -1658,6 +1658,10 @@
   color: #ffab00 !important;
 }
 
+.orange-web {
+  background-color: #FFD54F !important;
+}
+
 .orange {
   background-color: #ff9800 !important;
 }
@@ -6449,7 +6453,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
 }
 
 .input-field input[type=search]:focus {
-  background-color: #fff;
+  background-color: #FFE082;
   border: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
