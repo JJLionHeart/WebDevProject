@@ -28,8 +28,10 @@
     </nav>
 
 <div class="row">
-    <h4 class="header teal-text text-lighten-2 col s6 offset-s1">Your Contacts</h4>
         <div class= "contacts">
+        <div class="collection with-header deep-purple white-text center">
+                <h4 class="task-card-title">Your Contacts</h4>
+        </div>
         <ul class="collection">
             <li class="collection-item avatar">
             <img src="user.png" alt="" class="circle">
