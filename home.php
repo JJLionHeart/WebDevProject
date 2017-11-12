@@ -95,12 +95,11 @@
     </div>  
 </div>
 		
-	<script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/home.js"></script>
     <script src="js/materialize-collection-actions-1.0.0.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 </body>
 
 </html>
