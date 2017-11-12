@@ -38,7 +38,7 @@ $(document).ready(function() {
     ]);
 
 $('#modal1').modal();
-$('#modal1').on("click", $("#createTask").modal('open'));
+$("#createTask").openModal();
 
 $("#logout").click(function() {
         var jsonToSend = {
