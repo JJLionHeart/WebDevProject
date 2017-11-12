@@ -70,6 +70,7 @@ $.ajax({
    },
    ContentType: "application/json",
    success: function(data) {
+    console.log(data);
     var js =jQuery.parseJSON(data.DATA);
     var newHTML = "";
     for(var i = 0; i < data.NUM_ROWS; i++) {
