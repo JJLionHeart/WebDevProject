@@ -40,9 +40,8 @@
 <div class="row">
     <div id="individual-sidebar" class="col s6">
         <div class="collection with-header deep-purple white-text center">
-                <h4 class="task-card-title">Your Tasks for today <span><a class="btn-floating btn-large waves-effect waves-light orange center">
-                        <i class="material-icons">add</i>
-                </a></span></h4>
+                <h4 class="task-card-title">Your Tasks for today</h4>
+                <a class="btn-floating btn-large waves-effect waves-light orange center">Add New Task</a>
         </div>
         <ul id="tasks" class="collection">
            
