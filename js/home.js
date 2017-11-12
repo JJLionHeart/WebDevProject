@@ -1,5 +1,4 @@
 //$("#newTask-btn").click("on", createTask);
-
 $(document).ready(function() {
     var colors = ['lightgrey', 'lightblue', 'lightgreen'];
     MaterializeCollectionActions.configureActions($('#tasks'), [
@@ -14,7 +13,7 @@ $(document).ready(function() {
             {
             name: 'brush',
             callback: function (collectionItem, collection) {
-                addTask($(collectionItem));
+                modifyTask($(collectionItem).attr("id"));
             }
         }
     ]);
@@ -124,11 +123,38 @@ $.ajax({
       alert("An error ocurred while getting Tasks: "+data.statusText);
    }
 });
+
+//Add new task
+$("submit-task").click(addTask);
+$("submit-project").click(addProject);
 });
 
 
-function addTask(taskId){
-    //Funcion que modifica o agrega una task
+function addTask(){
+    var content = $("#task-name");
+    var deadline = $("#task-deadline");
+    var start_date = $("#task-startdate");
+    $.ajax({
+        url : "./data/applicationLayer.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            "action" : "ADDTASK",
+            "CONTENT" : content,
+            "DEADLINE" : deadline,
+            "START_DATE" : start_date
+        },
+        ContentType: "application/json",
+        success: function(data) {
+            console.log("Task deleted");
+        },
+        error: function(data) {
+           alert("An error ocurred while getting Tasks: "+data.statusText);
+        }
+     });
+}
+
+function modifyTask(taskId) {
 
 }
 
