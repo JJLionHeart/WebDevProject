@@ -74,7 +74,7 @@ $.ajax({
     var newHTML = "";
     for(var i = 0; i < data.NUM_ROWS; i++) {
          var project = jQuery.parseJSON(jsons[i]);
-         console.log("Hola");
+         console.log(data.NUM_ROWS);
          console.log(project);
 
          newHTML += "<li id="+ project.id+ " class= 'collection-item' style='touch-action: pan-y;'>";
