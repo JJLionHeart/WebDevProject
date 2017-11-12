@@ -132,9 +132,9 @@ $("#submit-task").click(addTask);
 
 function addTask(){
     console.log("hello adding task");
-    var content = $("#task-name");
-    var deadline = $("#task-deadline");
-    var start_date = $("#task-startdate");
+    var content = $("#task-name").val();
+    var deadline = $("#task-deadline").val();
+    var start_date = $("#task-startdate").val();
     $.ajax({
         url : "./data/applicationLayer.php",
         type: "POST",
