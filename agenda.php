@@ -9,7 +9,7 @@
 	<!-- CSS  -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-	<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+	<link href="css/mystyle.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
 
 <body>
@@ -28,29 +28,27 @@
     </nav>
 
 <div class="row">
-        <h4 class="header teal-text text-lighten-2 col s6 offset-s1">Your Contacts</h4>
-        <div class="col s6 offset-s1">
-            <div class= "contacts">
-            <ul class="collection">
-                <li class="collection-item avatar">
-                <img src="user.png" alt="" class="circle">
-                <span class="title">Title</span>
-                <p>First Line <br>
-                    Second Line
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                </li>
-                <li class="collection-item avatar">
-                <i class="material-icons circle">folder</i>
-                <span class="title">Title</span>
-                <p>First Line <br>
-                    Second Line
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                </li>
-            </ul>
-            </div>    
-        </div>
+    <h4 class="header teal-text text-lighten-2 col s6 offset-s1">Your Contacts</h4>
+        <div class= "contacts">
+        <ul class="collection">
+            <li class="collection-item avatar">
+            <img src="user.png" alt="" class="circle">
+            <span class="title">Title</span>
+            <p>First Line <br>
+                Second Line
+            </p>
+            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+            </li>
+            <li class="collection-item avatar">
+            <img src="user.png" alt="" class="circle">
+            <span class="title">Title</span>
+            <p>First Line <br>
+                Second Line
+            </p>
+            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+            </li>
+        </ul>
+        </div>    
     </div>
 </div>
 			
