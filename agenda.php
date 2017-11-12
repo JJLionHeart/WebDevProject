@@ -13,22 +13,42 @@
 </head>
 
 <body>
+
     <nav>
-    <div class="nav-wrapper deep-purple2">
-        <a href="#" class="brand-logo">Logo</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down deep-purple2">
-        <li><a href="Add.html">New Task</a></li>
-        <li><a href="home.php">Home</a></li>
-        <li><a href="calendar.php">Calendar</a></li>
-        <li id = "logout"><a>Logout</a></li>
-        </ul>
-    </div>
-</nav>
+        <div class="nav-wrapper cyan">
+            <a id="brand-logo">Space Unicorns</a>
+            <img id="unicornio" src="unicornio.png" alt=""> 
+            
+            <ul id="nav" class="right hide-on-med-and-down cyan">
+            <li><a href="agenda.php">Agenda</a></li>
+            <li><a href="calendar.php">Calendar</a></li>
+            <li id = "logout"><a>Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
 <div class="row">
         <h4 class="header teal-text text-lighten-2 col s6 offset-s1">Your Contacts</h4>
         <div class="col s6 offset-s1">
             <div class= "contacts">
-                    Aqui van los contactos
+            <ul class="collection">
+                <li class="collection-item avatar">
+                <img src="user.png" alt="" class="circle">
+                <span class="title">Title</span>
+                <p>First Line <br>
+                    Second Line
+                </p>
+                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>
+                <li class="collection-item avatar">
+                <i class="material-icons circle">folder</i>
+                <span class="title">Title</span>
+                <p>First Line <br>
+                    Second Line
+                </p>
+                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>
+            </ul>
             </div>    
         </div>
     </div>
