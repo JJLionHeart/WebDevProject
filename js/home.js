@@ -1,3 +1,5 @@
+$("#newTask-btn").click("on", createTask);
+
 $(document).ready(function() {
     var colors = ['lightgrey', 'lightblue', 'lightgreen'];
     MaterializeCollectionActions.configureActions($('#tasks'), [
@@ -16,6 +18,25 @@ $(document).ready(function() {
             }
         }
     ]);
+
+    var colors = ['lightgrey', 'lightblue', 'lightgreen'];
+    MaterializeCollectionActions.configureActions($('#projects'), [
+        {
+            name: 'delete',
+            callback: function (collectionItem, collection) {
+                $(collectionItem).remove();
+                console.log($(collectionItem).attr("id"));
+                deleteProject($(collectionItem).attr("id"));
+            }
+            },
+            {
+            name: 'brush',
+            callback: function (collectionItem, collection) {
+                addTask($(collectionItem));
+            }
+        }
+    ]);
+
 
 $("#logout").click(function() {
         var jsonToSend = {
@@ -60,7 +81,7 @@ $.ajax({
       alert("An error ocurred while getting Tasks: "+data.statusText);
    }
 });
-console.log("hello");
+
 $.ajax({
    url : "./data/applicationLayer.php",
    type: "POST",
@@ -70,45 +91,16 @@ $.ajax({
    },
    ContentType: "application/json",
    success: function(data) {
-    console.log(data);
     var js =jQuery.parseJSON(data.DATA);
     var newHTML = "";
     for(var i = 0; i < data.NUM_ROWS; i++) {
          var project = jQuery.parseJSON(js[i]);
-         console.log("holaaaa");
-         console.log(data.NUM_ROWS);
-         console.log(project);
-
          newHTML += "<li id="+ project.id+ " class= 'collection-item' style='touch-action: pan-y;'>";
          newHTML += "<input id=project-tasks"+project.id + " type='checkbox'> <label for=project-tasks"+project.id+">"+project.name+"</br>"+"<a href='#!' class='secondary-content'>";
          newHTML += "<span class='ultra-small right'>" + project.description +"</span></a></label></li>";
          
     }
     $("#projects").append(newHTML);
-
-       // La idea es exactamente igual que con tasks
-       // Data contiene dos campos utiles
-       // 1) data.NUM_ROWS contiene el numero de tasks que hay en la base
-       //    de datos para este usuario en particular
-       // 2) data.DATA contiene una string que representa un arreglo de jsons,
-       //    para recuperarlo puedes usar la siguiente funcion:
-       //    var jsons = jQuery.parseJSON(data.DATA).
-       //
-       //    Cada string dentro del arreglo es, a su vez, otro json que 
-       //    representa un proyecto individual:
-       //
-       //    var proyecto1 = jQuery.parseJSON(jsons[0])
-       //
-       //    Cada proyecto tiene 4 atributos: id, name, description, y deadline
-       //    console.log(proyecto1.id)
-       //    console.log(proyecto1.name)
-       //    console.log(proyecto1.description)
-       //    console.log(proyecto1.deadline)
-       //
-       //    La idea es que iteres por el arreglo de jsons de tareas (var tarea1)
-       //    y vayas recuperando cada json en base al numero de tareas (data.NUM_ROWS)
-       //    y despliegues la informacion en el frontend
-       console.log(data.DATA);
    },
    error: function(data) {
       alert("An error ocurred while getting Tasks: "+data.statusText);
@@ -134,6 +126,25 @@ function deleteTask(taskId) {
         ContentType: "application/json",
         success: function(data) {
             console.log("Task deleted");
+        },
+        error: function(data) {
+           alert("An error ocurred while getting Tasks: "+data.statusText);
+        }
+     });
+}
+
+function deleteProject(projectId) {
+    $.ajax({
+        url : "./data/applicationLayer.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            "action" : "DELETEPROJECT",
+            "ID" : projectId
+        },
+        ContentType: "application/json",
+        success: function(data) {
+            console.log("Project deleted");
         },
         error: function(data) {
            alert("An error ocurred while getting Tasks: "+data.statusText);
