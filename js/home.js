@@ -49,7 +49,6 @@ $('.datepicker').pickadate({
   format: 'mm/dd/yyyy',
   selectMonths: true,
   selectYears: 15,
-  max: today,
 });
 
 

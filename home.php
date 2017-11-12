@@ -51,28 +51,22 @@
                     <div class="row">
                         <form>
                             <nav class="top-nav">
-                            <div class="container">
-                            <div class="nav-wrapper">
-                            <legend>Create Task</legend>
-                            <br>
-                            <p>Title<br/>
-                                <input id="firstName" type="text">
-                            </p>
+                                <div class="nav-wrapper cyan">
+                                    <legend>Create Task</legend>
+                                    <br>
+                                    <p>Title<br/>
+                                        <input id="firstName" type="text">
+                                    </p>
 
-                            <p>Start Date<br/>
-                                <input type="text" id="startdate" class="datepicker">      
-                            </p>
+                                    <p>Start Date<br/>
+                                        <input type="text" id="startdate" class="datepicker">      
+                                    </p>
 
-                            <p>Deadline<br/>
-                                <input type="text" id="deadline" class="datepicker">  
-                            </p>
+                                    <p>Deadline<br/>
+                                        <input type="text" id="deadline" class="datepicker">  
+                                    </p>
 
-                            <p>Email<br/>
-                                <input id="email" type="text">
-                                <span id="errorEmail"></span>
-                            </p>
-                        </div>
-                        </div>
+                            </div>
                         </nav>
                         </form>
                     </div>
