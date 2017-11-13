@@ -17,7 +17,7 @@
 	<div id="login" class="row scrollspy deep-purple2">
 		<div class="section no-pad-bot">
 			<div class="container">
-				<h2 class="header center white-text brand-logo">Space Unicorns</h2>
+				<h1 id="title" class="header center white-text">Space Unicorns</h1>
 			</div>
 		</div>
 		<div class="card-panel col s4 z-depth-4 offset-s4">
