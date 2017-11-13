@@ -21,4 +21,8 @@ $(document).ready(function() {
            alert("An error ocurred while getting Tasks: "+data.statusText);
         }
      });
+     $("#search").click(findFriend(name));
 });
+function findFriend(name) {
+    
+}

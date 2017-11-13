@@ -80,3 +80,6 @@
   #newTask-btn {
     border: none !important;
   }
+
+  #search-icon {display:inline-block;margin-right:10px;} 
+  #search {display:inline-block;} 
