@@ -46,7 +46,7 @@ $(document).ready(function() {
                 myevents.push({
                     title: task.name,
                     start: task.start_date, //No debe de incluir la hora
-                    color:"#52C202",
+                    color:"#ff9800",
                     end: task.deadline
                 })
             }
