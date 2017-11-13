@@ -26,7 +26,7 @@
         <div class="nav-wrapper cyan">
         <div class="row">
             <div class="col s4"> 
-                <a id="brand-logo">Space Unicorns</a>
+                <a class="brand-logo">Space Unicorns</a>
                 <img id="unicornio" src="unicornio.png" alt=""> 
             </div>
             <div class="col s4">

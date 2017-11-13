@@ -23,7 +23,7 @@
 <body>
 <nav>
     <div class="nav-wrapper cyan">
-        <a id="brand-logo">Space Unicorns</a>
+        <a class="brand-logo">Space Unicorns</a>
         <img id="unicornio" src="unicornio.png" alt=""> 
         
         <ul id="nav" class="right hide-on-med-and-down cyan">
