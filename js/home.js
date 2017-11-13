@@ -53,8 +53,8 @@ $("#tasks").on("click",".collection-item", function(){
         if(taskId == task.id) {
             console.log("n");
             $('.modal').modal('open');
-            $("#task-name").val() = task.content;
-            $("#task-deadline").val() = task.deadline;
+            $("#task-name").val(task.content);
+            $("#task-deadline").val(task.deadline);
         }
    }
 });
