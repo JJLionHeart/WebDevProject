@@ -29,9 +29,26 @@ $(document).ready(function() {
         }
       });
 
-      $(".btn-floating btn-large waves-effect waves-light red").click(function(e){
-            console.log(e.parent());
+      $(".material-icons").click(function(e){
+           var user = e.parent().parent();
+           $.ajax({
+            url : "./data/applicationLayer.php",
+            type: "POST",
+            dataType: "json",
+            data: {
+                "action" : "FRIENDREQUEST",
+                "PERSON": user
+            },
+            ContentType: "application/json",
+            success: function(data) {
+                alert("New contact");
+            },
+            error: function(data) {
+               alert("An error ocurred while getting Tasks: "+data.statusText);
+            }
+         });
       });
+
       $("#logout").click(function() {
         var jsonToSend = {
             "action" : "LOGOUT"
