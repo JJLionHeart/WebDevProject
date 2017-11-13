@@ -71,7 +71,7 @@ $("#tasks").on("click",".collection-item", function(){
             $("#task-startdate").val(task.start_date);
             $("#submit-task").hide();
             $("#modify-task").show();
-            $('.modal').modal('open');
+            $("#createTask").modal('open');
         }
    }
 });
@@ -95,7 +95,7 @@ $("#projects").on("click",".collection-item", function(){
             $("#project-deadline").val(project.deadline);
             $("#submit-project").hide();
             $("#modify-project").show();
-            $('.modal').modal('open');
+            $('#createProject').modal('open');
         }
    }
 });
