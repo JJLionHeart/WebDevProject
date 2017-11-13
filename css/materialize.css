@@ -8981,7 +8981,7 @@ input[type=range]:focus::-ms-fill-upper {
 }*/
 .picker__date-display {
   text-align: left;
-  background-color: #26a69a;
+  background-color: #51C6E1;
   color: #fff;
   padding: 18px;
   font-weight: 300;
@@ -9102,7 +9102,7 @@ input[type=range]:focus::-ms-fill-upper {
 .picker__close, .picker__today, .picker__clear {
   font-size: 1.1rem;
   padding: 0 1rem;
-  color: #26a69a;
+  color: #00BCD4;
 }
 
 .picker__clear {
