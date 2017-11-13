@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var modifyTask;
+    var modifyIdTask;
     MaterializeCollectionActions.configureActions($('#projects'), [
         {
             name: 'delete',
@@ -57,7 +57,7 @@ $("#tasks").on("click",".collection-item", function(){
         console.log(taskId);
         if(taskId == task.id) {
             console.log("n");
-            modifyTask = taskId;
+            modifyIdTask = taskId;
             $("#title-task").text("Modify Task");
             $("#task-name").val(task.content);
             $("#task-deadline").val(task.deadline);
@@ -189,7 +189,7 @@ function modifyTask(){
             "CONTENT" : content,
             "DEADLINE" : deadline,
             "START_DATE" : start_date,
-            "ID" : modifyTask
+            "ID" : modifyIdTask
         },
         ContentType: "application/json",
         success: function(data) {
