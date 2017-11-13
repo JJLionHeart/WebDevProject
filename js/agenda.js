@@ -91,7 +91,7 @@ function findFriend(name) {
             for(var i = 0; i < data.COUNT; i++) {
                  var contacto = jQuery.parseJSON(jsons[i]);
                  console.log(contacto);
-                 newHTML += "<li id="+contacto.USERNAME+"class='collection-item avatar'> <img src='user.png' alt='' class='circle'><span class='title'>"+ contacto.USERNAME+"</span>";
+                 newHTML += "<li id='"+contacto.USERNAME+"' class='collection-item avatar'> <img src='user.png' alt='' class='circle'><span class='title'>"+ contacto.USERNAME+"</span>";
                  newHTML += "<p>"+contacto.FIRST_NAME+" "+contacto.LAST_NAME+"<br>"+contacto.EMAIL+"</p><button class='button' type='button'>Add</button></li>'";
             }
             $("#contactsInfo").append(newHTML);
