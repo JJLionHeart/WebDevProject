@@ -48,7 +48,7 @@
         </div>
         </div>    
     </nav>
-<div class="section">
+<div class="container">
 <div class="row">
     <div class= "addcontacts">
         <ul id="contactsInfo" class="collection">
