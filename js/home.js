@@ -4,8 +4,9 @@ $(document).ready(function() {
             name: 'delete',
             callback: function (collectionItem, collection) {
                 $(collectionItem).remove();
-                console.log($(collectionItem).attr("id"));
-                deleteProject($(collectionItem).attr("id"));
+                var project = $(collectionItem).attr("id");
+                var id = project.replace('<href=#','');
+                deleteProject(id);
             }
             }
     ]);
@@ -15,8 +16,10 @@ $(document).ready(function() {
             name: 'delete',
             callback: function (collectionItem, collection) {
                 $(collectionItem).remove();
+                var task = $(collectionItem).attr("id");
+                var id = task.replace('<href=#','');
                 console.log($(collectionItem).attr("id"));
-                deleteTask($(collectionItem).attr("id"));
+                deleteTask(id);
             }
             }
     ]);
