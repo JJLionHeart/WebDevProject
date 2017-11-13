@@ -50,6 +50,16 @@
     </nav>
 <div class="section">
 <div class="row">
+    <div class= "addcontacts">
+        <ul id="contactsInfo" class="collection">
+
+        </ul> 
+
+    </div>  
+</div>
+</div>
+<div class="section">
+<div class="row">
     <div class= "contacts">
         <div class="collection with-header deep-purple white-text center">
             <h4 class="task-card-title">Contact List</h4>
@@ -59,21 +69,6 @@
 
         </ul> 
 
-        <div id="addFriend" class="modal">
-                <div class="modal-content">
-                    <nav>
-                        <div class="nav-wrapper cyan">
-                        <h3>Add Friend</h3>
-                        </div>
-                    </nav>
-                    <ul id="contactsInfo" class="collection">
-                        
-                    </ul>
-                </div>
-                <div class="modal-footer">
-                    <a id="submit-task" href="#!" class="modal-action modal-close waves-effect cyan btn-flat">Submit</a>
-                </div>
-            </div>
     </div>  
 </div>
 </div>

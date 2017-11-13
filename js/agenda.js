@@ -28,12 +28,32 @@ $(document).ready(function() {
           return false;    //<---- Add this line
         }
       });
+
+      $("#logout").click(function() {
+        var jsonToSend = {
+            "action" : "LOGOUT"
+        }
+
+        $.ajax({
+            url : "./data/applicationLayer.php",
+            type: "POST",
+            dataType: "json",
+            data: jsonToSend,
+            ContentType: "application/json",
+            success : function(data) {
+                window.location = "index.php";
+            },
+            error : function(data) {
+                alert("Error to logout: " + data);
+            }
+        });
+});
 });
 function findFriend(name) {
     var index = name.indexOf(" ");  // Gets the first index where a space occours
     var first = name.substr(0, index); // Gets the first part
     var last = name.substr(index + 1);  // Gets the text part
-    $("#addFriend").modal();
+
     $.ajax({
         url : "./data/applicationLayer.php",
         type: "POST",
@@ -54,7 +74,6 @@ function findFriend(name) {
                  newHTML += "<p>"+contacto.FIRST_NAME+" "+contacto.LAST_NAME+"<br>"+contacto.EMAIL+"</p><a href='#!' class='secondary-content'><i class='material-icons'>grade</i></a></li>'";
             }
             $("#contactsInfo").append(newHTML);
-            $("#addFriend").openModal();
         },
         error: function(data) {
            alert("An error ocurred while getting Tasks: "+data.statusText);
