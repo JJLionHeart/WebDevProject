@@ -1,21 +1,4 @@
 $(document).ready(function() {
-    var colors = ['lightgrey', 'lightblue', 'lightgreen'];
-    MaterializeCollectionActions.configureActions($('#tasks'), [
-        {
-            name: 'delete',
-            callback: function (collectionItem, collection) {
-                $(collectionItem).remove();
-                console.log($(collectionItem).attr("id"));
-                deleteTask($(collectionItem).attr("id"));
-            }
-            },
-            {
-            name: 'brush',
-            callback: function (collectionItem, collection) {
-                modifyTask($(collectionItem).attr("id"));
-            }
-        }
-    ]);
 
     var colors = ['lightgrey', 'lightblue', 'lightgreen'];
     MaterializeCollectionActions.configureActions($('#projects'), [
