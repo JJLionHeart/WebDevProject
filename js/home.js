@@ -60,7 +60,7 @@ $("#tasks").on("click",".collection-item", function(){
             $("#title-task").text("Modify Task");
             $("#task-name").val(task.content);
             $("#task-deadline").val(task.deadline);
-            $("#task-startdate").val(task.startdate);
+            $("#task-startdate").val(task.start_date);
             $("#submit-task").hide();
             $("#modify-task").show();
             $('.modal').modal('open');
