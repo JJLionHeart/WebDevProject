@@ -174,6 +174,7 @@ function modifyTask(taskId) {
     for(var i = 0; i < jsons.length; i++) {
         var task = jQuery.parseJSON(jsons[i]);
         if(taskId == task.id) {
+            $("#createTask").modal();
             $("#createTask").openModal();
             $("#task-name").val() = task.content;
             $("#task-deadline").val() = task.deadline;
