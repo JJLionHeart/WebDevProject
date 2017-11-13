@@ -29,6 +29,9 @@ $(document).ready(function() {
         }
       });
 
+      $(".btn-floating btn-large waves-effect waves-light red").click(function(e){
+            console.log(e.parent());
+      });
       $("#logout").click(function() {
         var jsonToSend = {
             "action" : "LOGOUT"
@@ -70,8 +73,8 @@ function findFriend(name) {
             for(var i = 0; i < data.COUNT; i++) {
                  var contacto = jQuery.parseJSON(jsons[i]);
                  console.log(contacto);
-                 newHTML += "<li class='collection-item avatar'> <img src='user.png' alt='' class='circle'><span class='title'>"+ contacto.USERNAME+"</span>";
-                 newHTML += "<p>"+contacto.FIRST_NAME+" "+contacto.LAST_NAME+"<br>"+contacto.EMAIL+"</p><a href='#!' class='secondary-content'><i class='material-icons'>grade</i></a></li>'";
+                 newHTML += "<li id="+contacto.USERNAME+"class='collection-item avatar'> <img src='user.png' alt='' class='circle'><span class='title'>"+ contacto.USERNAME+"</span>";
+                 newHTML += "<p>"+contacto.FIRST_NAME+" "+contacto.LAST_NAME+"<br>"+contacto.EMAIL+"</p><a class='btn-floating btn-large waves-effect waves-light red'><i class='material-icons'>add</i></a></li>'";
             }
             $("#contactsInfo").append(newHTML);
         },
