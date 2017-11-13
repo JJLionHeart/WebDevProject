@@ -11,9 +11,9 @@ $(document).ready(function() {
             var jsons =jQuery.parseJSON(data.DATA);
             var newHTML = "";
             for(var i = 0; i < data.COUNT; i++) {
-                 var task = jQuery.parseJSON(jsons[i]);
-                 newHTML += "<li class='collection-item avatar'> <img src='user.png' alt='' class='circle'><span class='title'>Title</span>";
-                 newHTML += "<p>First Line <br>Second Line</p><a href='#!' class='secondary-content'><i class='material-icons'>grade</i></a></li>'";
+                 var contacto = jQuery.parseJSON(jsons[i]);
+                 newHTML += "<li class='collection-item avatar'> <img src='user.png' alt='' class='circle'><span class='title'>"+ contacto.USERNAME+"</span>";
+                 newHTML += "<p>"+contacto.FIRST_NAME+" "+contacto.LAST_NAME+"<br>"+contacto.EMAIL+"</p><a href='#!' class='secondary-content'><i class='material-icons'>grade</i></a></li>'";
             }
             $("#agenda").append(newHTML);
         },
@@ -21,8 +21,14 @@ $(document).ready(function() {
            alert("An error ocurred while getting Tasks: "+data.statusText);
         }
      });
-     $("#search").click(findFriend(name));
+
+     $("#search").keypress(function (e) {
+        if (e.which == 13) {
+          findFriend($("#search").val());
+          return false;    //<---- Add this line
+        }
+      });
 });
 function findFriend(name) {
-    
+   alert("HELLO");
 }

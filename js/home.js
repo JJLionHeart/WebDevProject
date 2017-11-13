@@ -13,6 +13,12 @@ $(document).ready(function() {
             callback: function (collectionItem, collection) {
                 addTask($(collectionItem));
             }
+        },
+        {
+            name: 'library_books',
+            callback: function (collectionItem, collection) {
+                addTask($(collectionItem));
+            }
         }
     ]);
 
