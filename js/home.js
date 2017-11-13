@@ -1,22 +1,4 @@
 $(document).ready(function() {
-
-    var colors = ['lightgrey', 'lightblue', 'lightgreen'];
-    MaterializeCollectionActions.configureActions($('#tasks'), [
-        {
-            name: 'delete',
-            callback: function (collectionItem, collection) {
-                $(collectionItem).remove();
-                console.log($(collectionItem).attr("id"));
-                deleteTask($(collectionItem).attr("id"));
-            }
-            },
-            {
-            name: 'brush',
-            callback: function (collectionItem, collection) {
-                addTask($(collectionItem));
-            }
-        }
-    ]);
     MaterializeCollectionActions.configureActions($('#projects'), [
         {
             name: 'delete',
@@ -86,7 +68,7 @@ $.ajax({
        var newHTML = "";
        for(var i = 0; i < data.NUM_ROWS; i++) {
             var task = jQuery.parseJSON(jsons[i]);
-            newHTML +="<li id="+ task.id+"><div class='collapsible-header'><i class='material-icons'>assignment</i>"+task.content+"</div><div class='collapsible-body'>";
+            newHTML +="<li id="+ task.id+"><div class='collapsible-header'><i class='material-icons'>assignment</i>"+task.content+"<a href='#!' class='secondary-content'><i class='material-icons'>close</i></a></div><div class='collapsible-body'>";
             newHTML +="<p> Start: "+task.start_date+"<br>End: "+task.deadline+"</p></div></li>";
        }
        $("#tasks").append(newHTML);
