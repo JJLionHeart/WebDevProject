@@ -11,12 +11,14 @@ $(document).ready(function() {
             {
             name: 'edit',
             callback: function (collectionItem, collection) {
+                $(collectionItem).attr('href',"#modal1");
                 modifyProject($(collectionItem).attr("id"));
             }
         },
         {
             name: 'library_books',
             callback: function (collectionItem, collection) {
+
                 modifyProject($(collectionItem).attr("id"));
             }
         }
@@ -174,7 +176,7 @@ function modifyTask(taskId) {
     for(var i = 0; i < jsons.length; i++) {
         var task = jQuery.parseJSON(jsons[i]);
         if(taskId == task.id) {
-            $("#createTask").modal();
+            //$("#createTask").modal();
 
             $("#task-name").val() = task.content;
             $("#task-deadline").val() = task.deadline;
