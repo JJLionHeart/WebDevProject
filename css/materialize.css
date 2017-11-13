@@ -6448,6 +6448,8 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
   padding-left: 4rem;
   width: calc(100% - 4rem);
   border: 0;
+  background-color: #0097A7 !important;
+  border-radius: 25px !important;
   -webkit-box-shadow: none;
           box-shadow: none;
 }

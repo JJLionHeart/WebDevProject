@@ -49,10 +49,12 @@
         </div>    
     </nav>
 
-    <div class= "addcontacts section">
+    <div class= "addcontacts container">
+        <div class="section">
         <ul id="contactsInfo" class="collection">
 
         </ul> 
+    </div>
     </div>  
 
 
