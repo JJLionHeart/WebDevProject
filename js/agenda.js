@@ -43,6 +43,7 @@ $(document).ready(function() {
             ContentType: "application/json",
             success: function(data) {
                 alert("New contact");
+                location.reload();                
             },
             error: function(data) {
                alert("An error ocurred while getting Tasks: "+data.statusText);

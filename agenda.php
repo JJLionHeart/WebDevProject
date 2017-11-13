@@ -33,7 +33,7 @@
                 <form>
                     <div class="input-field">
                         <input id="search" type="search" required>
-                        <label id="search-icon" class="label-icon" for="search"><i class="material-icons">search</i></label>
+                        <label id="search-icon" class="label-icon" placeholder="Search firstname + lastname" for="search"><i class="material-icons">search</i></label>
                         <i class="material-icons">close</i>
                     </div>
                 </form>
@@ -49,7 +49,7 @@
         </div>    
     </nav>
 
-    <div class= "addcontacts">
+    <div class= "addcontacts row">
         <ul id="contactsInfo" class="collection">
 
         </ul> 
