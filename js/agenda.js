@@ -29,7 +29,7 @@ $(document).ready(function() {
         }
       });
 
-      $(".material-icons").click(function(e){
+      $(".button").click(function(e){
            var user = e.parent().parent();
            $.ajax({
             url : "./data/applicationLayer.php",
@@ -91,7 +91,7 @@ function findFriend(name) {
                  var contacto = jQuery.parseJSON(jsons[i]);
                  console.log(contacto);
                  newHTML += "<li id="+contacto.USERNAME+"class='collection-item avatar'> <img src='user.png' alt='' class='circle'><span class='title'>"+ contacto.USERNAME+"</span>";
-                 newHTML += "<p>"+contacto.FIRST_NAME+" "+contacto.LAST_NAME+"<br>"+contacto.EMAIL+"</p><a class='btn-floating btn-large waves-effect waves-light red'><i class='material-icons'>add</i></a></li>'";
+                 newHTML += "<p>"+contacto.FIRST_NAME+" "+contacto.LAST_NAME+"<br>"+contacto.EMAIL+"</p><button class='button' type='button'>Add</button></li>'";
             }
             $("#contactsInfo").append(newHTML);
         },
