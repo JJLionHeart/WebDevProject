@@ -49,6 +49,7 @@ $("#tasks").on("click",".collection-item", function(){
     console.log(allTasks);
     for(var i = 0; i < jsons.length; i++) {
         var task = jQuery.parseJSON(jsons[i]);
+        console.log(taskId);
         if(taskId == task.id) {
             $("#task-name").val() = task.content;
             $("#task-deadline").val() = task.deadline;
