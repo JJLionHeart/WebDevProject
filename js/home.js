@@ -87,7 +87,7 @@ $.ajax({
             var task = jQuery.parseJSON(jsons[i]);
             newHTML += "<li id="+ task.id+ " class= 'collection-item' style='touch-action: pan-y;'>";
             newHTML += "<input id=project-tasks"+task.id + " type='checkbox'> <label for=project-tasks"+task.id+">"+task.content+"</br>"+"<a href='#!' class='secondary-content'>";
-            newHTML += "<span class='ultra-small right'>  " + task.deadline +"</span></a></label></li>";
+            newHTML += "<span style='color:red' class='ultra-small right' >  " + task.deadline +"</span></a></label></li>";
        }
        $("#tasks").append(newHTML);
    },
