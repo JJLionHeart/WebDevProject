@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    var modifyIdTask;
     MaterializeCollectionActions.configureActions($('#projects'), [
         {
             name: 'delete',
@@ -57,7 +56,7 @@ $("#tasks").on("click",".collection-item", function(){
         console.log(taskId);
         if(taskId == task.id) {
             console.log("n");
-            modifyIdTask = taskId;
+            localStorage.setItem("modifyIdTask", taskId);            
             $("#title-task").text("Modify Task");
             $("#task-name").val(task.content);
             $("#task-deadline").val(task.deadline);
@@ -180,6 +179,7 @@ function modifyTask(){
     var content = $("#task-name").val();
     var deadline = $("#task-deadline").val();
     var start_date = $("#task-startdate").val();
+    var id = NUMBER(localStorage.getItem("modifyIdTask"));
     $.ajax({
         url : "./data/applicationLayer.php",
         type: "POST",
@@ -189,7 +189,7 @@ function modifyTask(){
             "CONTENT" : content,
             "DEADLINE" : deadline,
             "START_DATE" : start_date,
-            "ID" : modifyIdTask
+            "ID" : id
         },
         ContentType: "application/json",
         success: function(data) {
