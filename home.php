@@ -80,13 +80,13 @@
     </div>
 
     <div id="projects-sidebar" class="col s6">
-        <div class="collection with-header orange white-text center">
+        <div class="collection with-header green white-text center">
                 <h4 class="task-card-title">Your Projects</h4>
         </div>
         
         <div  id="newTask-btn" class ="collection">
             <!-- Modal Trigger -->
-            <button id="modal2" class="waves-effect waves-light btn modal-trigger orange right offset-s1" data-target="createProject">Add Project</button>
+            <button id="modal2" class="waves-effect waves-light btn modal-trigger green right offset-s1" data-target="createProject">Add Project</button>
 
             <!-- Modal Structure -->
             <div id="createProject" class="modal">
