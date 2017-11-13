@@ -40,7 +40,7 @@
             </div>  
             <div class="col s4">
                 <ul id="nav" class="right hide-on-med-and-down cyan">
-                    <li><a href="agenda.php">Agenda</a></li>
+                    <li><a href="home.php">Home</a></li>
                     <li><a href="calendar.php">Calendar</a></li>
                     <li id = "logout"><a>Logout</a></li>
                 </ul>

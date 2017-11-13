@@ -87,9 +87,8 @@ $.ajax({
        var newHTML = "";
        for(var i = 0; i < data.NUM_ROWS; i++) {
             var task = jQuery.parseJSON(jsons[i]);
-            newHTML += "<li id="+ task.id + " class= 'collection-item' style='touch-action: pan-y;'>";
-            newHTML += "<input id=individual-task"+task.id+" type='checkbox'> <label for=individual-task"+task.id+">"+task.content+"</br>"+"<a href='#!' class='secondary-content'>";
-            newHTML += "<span class='ultra-small right'>" + task.deadline +"</span></a></label></li>";
+            newHTML += "<li id="+ task.id + " class= 'collection-item'>";
+            newHTML += "<span id=individual-task"+task.id+" class='title'>"+task.content+"<p>+"+task.start_date+"<br>"+task.deadline+"</p>";
        }
        $("#tasks").append(newHTML);
    },
@@ -145,8 +144,7 @@ function addTask(){
         },
         ContentType: "application/json",
         success: function(data) {
-            Materialize.toast("Task created", 4000)
-            //alert("Task created.");
+            alert("Task created.");
             location.reload();
         },
         error: function(data) {
