@@ -16,6 +16,23 @@ $(document).ready(function() {
         }
     ]);
 
+    MaterializeCollectionActions.configureActions($('#tasks'), [
+        {
+            name: 'delete',
+            callback: function (collectionItem, collection) {
+                $(collectionItem).remove();
+                console.log($(collectionItem).attr("id"));
+                deleteProject($(collectionItem).attr("id"));
+            }
+            },
+            {
+            name: 'brush',
+            callback: function (collectionItem, collection) {
+                addTask($(collectionItem));
+            }
+        }
+    ]);
+
 //Create tasks
 $("#modal1").click(function (){
     $("#createTask").modal();
@@ -68,8 +85,8 @@ $.ajax({
        var newHTML = "";
        for(var i = 0; i < data.NUM_ROWS; i++) {
             var task = jQuery.parseJSON(jsons[i]);
-            newHTML += "<li id="+ project.id+ " class= 'collection-item' style='touch-action: pan-y;'>";
-            newHTML += "<input id=project-tasks"+project.id + " type='checkbox'> <label for=project-tasks"+project.id+">"+task.content+"   "+"</br>"+"<a href='#!' class='secondary-content'>";
+            newHTML += "<li id="+ task.id+ " class= 'collection-item' style='touch-action: pan-y;'>";
+            newHTML += "<input id=project-tasks"+task.id + " type='checkbox'> <label for=project-tasks"+task.id+">"+task.content+"</br>"+"<a href='#!' class='secondary-content'>";
             newHTML += "<span class='ultra-small right'>  " + task.deadline +"</span></a></label></li>";
        }
        $("#tasks").append(newHTML);
