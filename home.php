@@ -49,7 +49,7 @@
                 <div class="modal-content">
                     <nav>
                         <div class="nav-wrapper cyan">
-                        <h3>Create Task</h3>
+                        <h3 id="title-task">Create Task</h3>
                         </div>
                     </nav>
                     <div class="row">
@@ -70,6 +70,7 @@
                 </div>
                 <div class="modal-footer">
                     <a id="submit-task" href="#!" class="modal-action modal-close waves-effect cyan btn-flat">Submit</a>
+                    <a id="modify-task" href="#!" class="modal-action modal-close waves-effect cyan btn-flat center">Modify</a>
                 </div>
             </div>
         </div>
