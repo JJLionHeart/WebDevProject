@@ -30,7 +30,7 @@ $(document).ready(function() {
       });
 
       $("#contactsInfo").on("click",".button",function(){
-           var user = $(this).parent();
+           var user = $(this).parent().attr('id');
            console.log(user);
            $.ajax({
             url : "./data/applicationLayer.php",
