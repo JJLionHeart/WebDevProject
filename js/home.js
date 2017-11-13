@@ -40,9 +40,10 @@ $('.datepicker').pickadate({
 });
 
 $("#tasks").on("click",".collection-item", function(){
-    var taskId = $(this).attr("id");
+    var id = $(this).attr("id");
+    var taskId = id.replace('<href=#','');
     $("#createTask").modal();
-    $('.modal').modal('open');
+    
     var allTasks = localStorage.getItem("allTasks");
     var jsons = jQuery.parseJSON(allTasks);
     console.log(allTasks);
@@ -51,6 +52,7 @@ $("#tasks").on("click",".collection-item", function(){
         if(taskId == task.id) {
             $("#task-name").val() = task.content;
             $("#task-deadline").val() = task.deadline;
+            $('.modal').modal('open');
         }
    }
 });
