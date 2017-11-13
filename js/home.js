@@ -7,20 +7,7 @@ $(document).ready(function() {
                 console.log($(collectionItem).attr("id"));
                 deleteProject($(collectionItem).attr("id"));
             }
-            },
-            {
-            name: 'edit',
-            callback: function (collectionItem, collection) {
-                modifyProject($(collectionItem).attr("id"));
             }
-        },
-        {
-            name: 'library_books',
-            callback: function (collectionItem, collection) {
-
-                modifyProject($(collectionItem).attr("id"));
-            }
-        }
     ]);
 
     MaterializeCollectionActions.configureActions($('#tasks'), [
@@ -31,20 +18,7 @@ $(document).ready(function() {
                 console.log($(collectionItem).attr("id"));
                 deleteTask($(collectionItem).attr("id"));
             }
-            },
-            {
-            name: 'edit',
-            callback: function (collectionItem, collection) {
-                $(collectionItem).children().attr("href","#createTask");
-                modifyTask($(collectionItem).attr("id"));
             }
-        },
-        {
-            name: 'library_books',
-            callback: function (collectionItem, collection) {
-                modifyTask($(collectionItem).attr("id"));
-            }
-        }
     ]);
 
 //Create tasks
@@ -63,6 +37,11 @@ $('.datepicker').pickadate({
   format: 'mm/dd/yyyy',
   selectMonths: true,
   selectYears: 15,
+});
+
+$("#tasks").on("click",".collection-item", function(){
+    $("#createProject").modal();
+    $("#createProject").openModal();
 });
 
 
@@ -103,7 +82,7 @@ $.ajax({
        var newHTML = "";
        for(var i = 0; i < data.NUM_ROWS; i++) {
             var task = jQuery.parseJSON(jsons[i]);
-            newHTML += "<li id="+ task.id+ " class= 'collection-item' style='touch-action: pan-y;'>";
+            newHTML += "<li id="+ task.id+ "href=#createTask class= 'collection-item' style='touch-action: pan-y;'>";
             newHTML += "<input id=project-tasks"+task.id + " type='checkbox'> <label for=project-tasks"+task.id+">"+task.content+"</br>"+"</label></li>";
        }
        $("#tasks").append(newHTML);
