@@ -50,10 +50,12 @@ function findFriend(name) {
             for(var i = 0; i < data.COUNT; i++) {
                  var contacto = jQuery.parseJSON(jsons[i]);
                  console.log(contacto);
-                 //newHTML += "<li class='collection-item avatar'> <img src='user.png' alt='' class='circle'><span class='title'>"+ contacto.USERNAME+"</span>";
-                 //newHTML += "<p>"+contacto.FIRST_NAME+" "+contacto.LAST_NAME+"<br>"+contacto.EMAIL+"</p><a href='#!' class='secondary-content'><i class='material-icons'>grade</i></a></li>'";
+                 newHTML += "<li class='collection-item avatar'> <img src='user.png' alt='' class='circle'><span class='title'>"+ contacto.USERNAME+"</span>";
+                 newHTML += "<p>"+contacto.FIRST_NAME+" "+contacto.LAST_NAME+"<br>"+contacto.EMAIL+"</p><a href='#!' class='secondary-content'><i class='material-icons'>grade</i></a></li>'";
             }
-            $("#agenda").append(newHTML);
+            $("#contactsInfo").append(newHTML);
+            $("#addFriend").modal();
+            $("#addFriend").openModal();
         },
         error: function(data) {
            alert("An error ocurred while getting Tasks: "+data.statusText);
