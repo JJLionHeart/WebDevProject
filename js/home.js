@@ -23,10 +23,10 @@ $(document).ready(function() {
 
 //Create tasks
 $("#modal1").click(function (){
+    $("#createTask").modal();
     $("#task-name").val("");
     $("#task-deadline").val("");
     $("#task-startdate").val("");
-    $("#createTask").modal();
     $("#submit-task").show();
     $("#modify-task").hide();
     $("#createTask").openModal();
@@ -146,6 +146,9 @@ $("#submit-task").click(addTask);
 $("#submit-project").click(addProject);
 });
 
+//modify task
+$("#modify-task").click(modifyTask);
+
 
 function addTask(){
     var content = $("#task-name").val();
@@ -172,6 +175,30 @@ function addTask(){
      });
 }
 
+function modifyTask(){
+    var content = $("#task-name").val();
+    var deadline = $("#task-deadline").val();
+    var start_date = $("#task-startdate").val();
+    $.ajax({
+        url : "./data/applicationLayer.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            "action" : "MODIFYTASK",
+            "CONTENT" : content,
+            "DEADLINE" : deadline,
+            "START_DATE" : start_date
+        },
+        ContentType: "application/json",
+        success: function(data) {
+            alert("Task modified.");
+            location.reload();
+        },
+        error: function(data) {
+           alert("An error ocurred while getting Tasks: "+data.statusText);
+        }
+     });
+}
 
 function deleteTask(taskId) {
     $.ajax({

@@ -49,7 +49,7 @@
                 <div class="modal-content">
                     <nav>
                         <div class="nav-wrapper cyan">
-                        <h3 id="title-task">Create Task</h3>
+                        <h3 id="title-task">Task</h3>
                         </div>
                     </nav>
                     <div class="row">
