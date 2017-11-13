@@ -41,14 +41,14 @@ $('.datepicker').pickadate({
 
 $("#tasks").on("click",".collection-item", function(){
     var taskId = $(this).attr("id");
+    $("#createTask").modal();
+    $('.modal').modal('open');
     var allTasks = localStorage.getItem("allTasks");
     var jsons = jQuery.parseJSON(allTasks);
     console.log(allTasks);
     for(var i = 0; i < jsons.length; i++) {
         var task = jQuery.parseJSON(jsons[i]);
         if(taskId == task.id) {
-            $("#createTask").modal();
-            $('.modal').modal('open');
             $("#task-name").val() = task.content;
             $("#task-deadline").val() = task.deadline;
         }
@@ -93,7 +93,7 @@ $.ajax({
        var newHTML = "";
        for(var i = 0; i < data.NUM_ROWS; i++) {
             var task = jQuery.parseJSON(jsons[i]);
-            newHTML += "<li id="+ task.id+ "href=# data-toggle='modal' data-target='#createTask' class= 'collection-item' style='touch-action: pan-y;'>";
+            newHTML += "<li id="+ task.id+ "<href=# data-toggle='modal' data-target='#createTask' class= 'collection-item' style='touch-action: pan-y;'>";
             newHTML += "<input id=project-tasks"+task.id + " type='checkbox'> <label for=project-tasks"+task.id+">"+task.content+"</br>"+"</label></li>";
        }
        $("#tasks").append(newHTML);
