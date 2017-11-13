@@ -88,7 +88,7 @@ $.ajax({
        for(var i = 0; i < data.NUM_ROWS; i++) {
             var task = jQuery.parseJSON(jsons[i]);
             newHTML += "<li id="+ task.id + " class= 'collection-item'>";
-            newHTML += "<span id=individual-task"+task.id+" class='title'>"+task.content+"<p>+"+task.start_date+"<br>"+task.deadline+"</p>";
+            newHTML += "<span id=individual-task"+task.id+" class='title'>"+task.content+"</span><p>+"+task.start_date+"<br>"+task.deadline+"</p>";
        }
        $("#tasks").append(newHTML);
    },
