@@ -101,4 +101,8 @@
   }
 
   #search-icon {display:inline-block;margin-right:10px;} 
-  #search {display:inline-block;} 
+  #search {
+    display:inline-block;
+    background-color: #0097A7 !important;
+    border-radius: 25px !important;
+  } 
