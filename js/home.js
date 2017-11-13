@@ -179,7 +179,7 @@ function modifyTask(){
     var content = $("#task-name").val();
     var deadline = $("#task-deadline").val();
     var start_date = $("#task-startdate").val();
-    var id = NUMBER(localStorage.getItem("modifyIdTask"));
+    var id = Number(localStorage.getItem("modifyIdTask"));
     $.ajax({
         url : "./data/applicationLayer.php",
         type: "POST",
