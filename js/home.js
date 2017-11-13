@@ -97,7 +97,7 @@ $.ajax({
    ContentType: "application/json",
    success: function(data) {
        var jsons =jQuery.parseJSON(data.DATA);
-       allTasks = jsons;
+       allTasks.push(jsons);
        var newHTML = "";
        for(var i = 0; i < data.NUM_ROWS; i++) {
             var task = jQuery.parseJSON(jsons[i]);
@@ -168,7 +168,6 @@ function addTask(){
 }
 
 function modifyTask(taskId) {
-
     for(var i = 0; i < allTasks.length; i++) {
         var task = jQuery.parseJSON(allTasks[i]);
         if(taskId == task.id) {
