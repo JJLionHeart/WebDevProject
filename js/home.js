@@ -51,9 +51,10 @@ $("#tasks").on("click",".collection-item", function(){
         var task = jQuery.parseJSON(jsons[i]);
         console.log(taskId);
         if(taskId == task.id) {
+            console.log("n");
+            $('.modal').modal('open');
             $("#task-name").val() = task.content;
             $("#task-deadline").val() = task.deadline;
-            $('.modal').modal('open');
         }
    }
 });
