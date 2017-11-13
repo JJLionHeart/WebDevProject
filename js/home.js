@@ -63,7 +63,6 @@ $("#tasks").on("click",".collection-item", function(){
         if(taskId == task.id) {
             console.log("n");
             localStorage.setItem("modifyIdTask", taskId);            
-            $("#title-task").text("Modify Task");
             $("#task-name").val(task.content);
             $("#task-deadline").val(task.deadline);
             $("#task-startdate").val(task.start_date);
@@ -77,7 +76,7 @@ $("#tasks").on("click",".collection-item", function(){
 $("#projects").on("click",".collection-item", function(){
     var id = $(this).attr("id");
     var projectId = id.replace('<href=#','');
-    $("#createTask").modal();
+    $("#createProject").modal();
     var allProjects = localStorage.getItem("allProjects");
     var jsons = jQuery.parseJSON(allProjects);
     console.log(allProjects);
