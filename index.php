@@ -9,6 +9,7 @@
 <head>
 	<title> Web project </title>
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
 	<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 	<link href="css/mystyle.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
@@ -16,7 +17,7 @@
 	<div id="login" class="row scrollspy deep-purple2">
 		<div class="section no-pad-bot">
 			<div class="container">
-				<h2 class="header center white-text">Welcome to our web page </h2>
+				<h2 class="header center white-text brand-logo">Space Unicorns</h2>
 			</div>
 		</div>
 		<div class="card-panel col s4 z-depth-4 offset-s4">

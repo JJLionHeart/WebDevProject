@@ -6475,7 +6475,7 @@ textarea.materialize-textarea + label:after, .select-wrapper + label:after {
   position: absolute;
   top: 0;
   right: 1rem;
-  color: white;
+  color: transparent;
   cursor: pointer;
   font-size: 2rem;
   -webkit-transition: .3s color;
