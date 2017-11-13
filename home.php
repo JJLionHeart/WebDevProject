@@ -94,7 +94,7 @@
                 <div class="modal-content">
                     <nav>
                         <div class="nav-wrapper cyan">
-                        <h3>Create Project</h3>
+                        <h3>Project</h3>
                         </div>
                     </nav>
                     <div class="row">
@@ -119,6 +119,7 @@
                 </div>
                 <div class="modal-footer">
                     <a id="submit-project" href="#!" class="modal-action modal-close waves-effect waves-cyan btn-flat">Submit</a>
+                    <a id="modify-project" href="#!" class="modal-action modal-close waves-effect waves-cyan btn-flat">Modify</a>
                 </div>
             </div>
         </div>

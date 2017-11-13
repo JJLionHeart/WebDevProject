@@ -34,6 +34,12 @@ $("#modal1").click(function (){
 
 $("#modal2").click(function (){
     $("#createProject").modal();
+    $("#project-name").val("");
+    $("#project-deadline").val("");
+    $("#project-startdate").val("");
+    $("#project-description").val("");
+    $("#submit-project").show();
+    $("#modify-project").hide();
     $("#createProject").openModal();
 });
 
@@ -63,6 +69,31 @@ $("#tasks").on("click",".collection-item", function(){
             $("#task-startdate").val(task.start_date);
             $("#submit-task").hide();
             $("#modify-task").show();
+            $('.modal').modal('open');
+        }
+   }
+});
+
+$("#projects").on("click",".collection-item", function(){
+    var id = $(this).attr("id");
+    var projectId = id.replace('<href=#','');
+    $("#createTask").modal();
+    var allProjects = localStorage.getItem("allProjects");
+    var jsons = jQuery.parseJSON(allProjects);
+    console.log(allProjects);
+    for(var i = 0; i < jsons.length; i++) {
+        var project = jQuery.parseJSON(jsons[i]);
+        console.log(projectId);
+        if(projectId == project.id) {
+            console.log("n");
+            localStorage.setItem("modifyIdProject", projectId);            
+            $("#title-task").text("Modify Task");
+            $("#project-name").val(project.name);
+            $("#project-description").val(project.description);
+            $("#project-startdate").val(project.start_date);
+            $("#project-deadline").val(project.deadline);
+            $("#submit-project").hide();
+            $("#modify-project").show();
             $('.modal').modal('open');
         }
    }
@@ -126,11 +157,14 @@ $.ajax({
    ContentType: "application/json",
    success: function(data) {
     var js =jQuery.parseJSON(data.DATA);
+    var allProjects = data.DATA;
+    localStorage.setItem("allProjects", allProjects);
+
     var newHTML = "";
     for(var i = 0; i < data.NUM_ROWS; i++) {
          var project = jQuery.parseJSON(js[i]);
-         newHTML += "<li id="+ project.id+ " class= 'collection-item' style='touch-action: pan-y;'>";
-         newHTML += "<input id=project-tasks"+project.id + " type='checkbox'> <label for=project-tasks"+project.id+">"+project.name+"</br>"+"<a href='#!' class='secondary-content'>";
+         newHTML += "<li id="+ project.id+ "<href=# data-toggle='modal' data-target='#createProject' class= 'collection-item' style='touch-action: pan-y;'>";
+         newHTML += "<input id=project-tasks"+project.id + " type='checkbox'> <label for=project-tasks"+project.id+">"+project.name+":  </br>"+"<a href='#!' class='secondary-content'>";
          newHTML += "<span class='ultra-small right'>" + project.description +"</span></a></label></li>";
          
     }
@@ -148,6 +182,7 @@ $("#submit-project").click(addProject);
 
 //modify task
 $("#modify-task").click(modifyTask);
+$("#modify-project").click(modifyProject);
 
 
 function addTask(){
@@ -189,6 +224,35 @@ function modifyTask(){
             "CONTENT" : content,
             "DEADLINE" : deadline,
             "START_DATE" : start_date,
+            "ID" : id
+        },
+        ContentType: "application/json",
+        success: function(data) {
+            alert("Task modified.");
+            location.reload();
+        },
+        error: function(data) {
+           alert("An error ocurred while getting Tasks: "+data.statusText);
+        }
+     });
+}
+
+function modifyProject(){
+    var name = $("#project-name").val();
+    var deadline = $("#project-deadline").val();
+    var start_date = $("#project-startdate").val();
+    var description = $("#project-description").val();
+    var id = Number(localStorage.getItem("modifyIdProject"));
+    $.ajax({
+        url : "./data/applicationLayer.php",
+        type: "POST",
+        dataType: "json",
+        data: {
+            "action" : "MODIFYPROJECT",
+            "NAME" : name,
+            "DESCRIPTION" : description,
+            "START_DATE" : start_date,
+            "DEADLINE" : deadline,
             "ID" : id
         },
         ContentType: "application/json",
