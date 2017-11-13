@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    var allProjects = [];
-    var allTasks = [];    
+    var allProjects;
+    var allTasks;    
 
     MaterializeCollectionActions.configureActions($('#projects'), [
         {
@@ -97,7 +97,7 @@ $.ajax({
    ContentType: "application/json",
    success: function(data) {
        var jsons =jQuery.parseJSON(data.DATA);
-       allTasks.push(jsons);
+       allTasks = jsons;
        var newHTML = "";
        for(var i = 0; i < data.NUM_ROWS; i++) {
             var task = jQuery.parseJSON(jsons[i]);
@@ -168,6 +168,7 @@ function addTask(){
 }
 
 function modifyTask(taskId) {
+    console.log(allTasks);
     for(var i = 0; i < allTasks.length; i++) {
         var task = jQuery.parseJSON(allTasks[i]);
         if(taskId == task.id) {
