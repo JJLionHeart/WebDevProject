@@ -1,4 +1,7 @@
 $(document).ready(function() {
+    var allProjects = [];
+    var allTasks = [];    
+
     MaterializeCollectionActions.configureActions($('#projects'), [
         {
             name: 'delete',
@@ -11,13 +14,13 @@ $(document).ready(function() {
             {
             name: 'edit',
             callback: function (collectionItem, collection) {
-                addTask($(collectionItem));
+                modifyProject($(collectionItem).attr("id"));
             }
         },
         {
             name: 'library_books',
             callback: function (collectionItem, collection) {
-                addTask($(collectionItem));
+                modifyProject($(collectionItem).attr("id"));
             }
         }
     ]);
@@ -28,19 +31,19 @@ $(document).ready(function() {
             callback: function (collectionItem, collection) {
                 $(collectionItem).remove();
                 console.log($(collectionItem).attr("id"));
-                deleteProject($(collectionItem).attr("id"));
+                deleteTask($(collectionItem).attr("id"));
             }
             },
             {
             name: 'edit',
             callback: function (collectionItem, collection) {
-                addTask($(collectionItem));
+                modifyTask($(collectionItem).attr("id"));
             }
         },
         {
             name: 'library_books',
             callback: function (collectionItem, collection) {
-                addTask($(collectionItem));
+                modifyTask($(collectionItem).attr("id"));
             }
         }
     ]);
@@ -94,6 +97,7 @@ $.ajax({
    ContentType: "application/json",
    success: function(data) {
        var jsons =jQuery.parseJSON(data.DATA);
+       allTasks = jsons;
        var newHTML = "";
        for(var i = 0; i < data.NUM_ROWS; i++) {
             var task = jQuery.parseJSON(jsons[i]);
@@ -164,6 +168,15 @@ function addTask(){
 }
 
 function modifyTask(taskId) {
+
+    for(var i = 0; i < allTasks.length; i++) {
+        var task = jQuery.parseJSON(allTasks[i]);
+        if(taskId == task.id) {
+            $("#createTask").openModal();
+            $("#task-name").val() = task.content;
+            $("#task-deadline").val() = task.deadline;
+        }
+   }
 
 }
 

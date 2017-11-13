@@ -117,7 +117,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a id="submit-project" href="#!" class="modal-action modal-close waves-effect waves-cyan btn-flat white-text">Save</a>
+                    <a id="submit-project" href="#!" class="modal-action modal-close waves-effect waves-cyan btn-flat">Submit</a>
                 </div>
             </div>
         </div>
