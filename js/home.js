@@ -86,7 +86,6 @@ $("#projects").on("click",".collection-item", function(){
         if(projectId == project.id) {
             console.log("n");
             localStorage.setItem("modifyIdProject", projectId);            
-            $("#title-task").text("Modify Task");
             $("#project-name").val(project.name);
             $("#project-description").val(project.description);
             $("#project-startdate").val(project.start_date);
