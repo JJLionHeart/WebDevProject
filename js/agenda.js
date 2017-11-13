@@ -33,7 +33,7 @@ function findFriend(name) {
     var index = name.indexOf(" ");  // Gets the first index where a space occours
     var first = name.substr(0, index); // Gets the first part
     var last = name.substr(index + 1);  // Gets the text part
-
+    $("#addFriend").modal();
     $.ajax({
         url : "./data/applicationLayer.php",
         type: "POST",
@@ -54,7 +54,6 @@ function findFriend(name) {
                  newHTML += "<p>"+contacto.FIRST_NAME+" "+contacto.LAST_NAME+"<br>"+contacto.EMAIL+"</p><a href='#!' class='secondary-content'><i class='material-icons'>grade</i></a></li>'";
             }
             $("#contactsInfo").append(newHTML);
-            $("#addFriend").modal();
             $("#addFriend").openModal();
         },
         error: function(data) {
