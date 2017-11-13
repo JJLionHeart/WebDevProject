@@ -11,6 +11,8 @@ $(document).ready(function() {
             {
             name: 'edit',
             callback: function (collectionItem, collection) {
+                console.log(collectionItem);
+                console.log(collection);
                 $(collectionItem).attr('href',"#modal1");
                 modifyProject($(collectionItem).attr("id"));
             }
