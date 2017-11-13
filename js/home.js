@@ -1,7 +1,4 @@
 $(document).ready(function() {
-    var allProjects;
-    var allTasks;    
-
     MaterializeCollectionActions.configureActions($('#projects'), [
         {
             name: 'delete',
@@ -97,7 +94,10 @@ $.ajax({
    ContentType: "application/json",
    success: function(data) {
        var jsons =jQuery.parseJSON(data.DATA);
-       allTasks = jsons;
+
+       var allTasks = data.DATA;
+       localStorage.setItem("allTasks", allTasks);
+
        var newHTML = "";
        for(var i = 0; i < data.NUM_ROWS; i++) {
             var task = jQuery.parseJSON(jsons[i]);
@@ -168,9 +168,11 @@ function addTask(){
 }
 
 function modifyTask(taskId) {
+    var allTasks = localStorage.getItem("allTasks");
+    var jsons = jQuery.parseJSON(allTasks);
     console.log(allTasks);
-    for(var i = 0; i < allTasks.length; i++) {
-        var task = jQuery.parseJSON(allTasks[i]);
+    for(var i = 0; i < jsons.length; i++) {
+        var task = jQuery.parseJSON(jsons[i]);
         if(taskId == task.id) {
             $("#createTask").openModal();
             $("#task-name").val() = task.content;
