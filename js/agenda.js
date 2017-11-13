@@ -29,8 +29,9 @@ $(document).ready(function() {
         }
       });
 
-      $("#contactsInfo").on("click",".button",function(e){
-           var user = e.parent().parent();
+      $("#contactsInfo").on("click",".button",function(){
+           var user = $(this).parent();
+           console.log(user);
            $.ajax({
             url : "./data/applicationLayer.php",
             type: "POST",
