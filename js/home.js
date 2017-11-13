@@ -145,7 +145,8 @@ function addTask(){
         },
         ContentType: "application/json",
         success: function(data) {
-            alert("Task created.");
+            swal("Success!", "Task created!", "success");
+            //alert("Task created.");
             location.reload();
         },
         error: function(data) {
