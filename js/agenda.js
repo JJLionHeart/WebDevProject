@@ -51,7 +51,7 @@ $(document).ready(function() {
          });
       });
 
-      $("#button1").click(function(){
+      $("#contactsInfo").on("click","#button1",function(){
         location.reload();
       });
 
