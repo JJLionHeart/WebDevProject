@@ -68,8 +68,9 @@ $.ajax({
        var newHTML = "";
        for(var i = 0; i < data.NUM_ROWS; i++) {
             var task = jQuery.parseJSON(jsons[i]);
-            newHTML +="<li id="+ task.id+"><div class='collapsible-header'><i class='material-icons'>assignment</i>"+task.content+"<a href='#!' class='secondary-content'><i class='material-icons'>close</i></a></div><div class='collapsible-body'>";
-            newHTML +="<p> Start: "+task.start_date+"<br>End: "+task.deadline+"</p></div></li>";
+            newHTML += "<li id="+ project.id+ " class= 'collection-item' style='touch-action: pan-y;'>";
+            newHTML += "<input id=project-tasks"+project.id + " type='checkbox'> <label for=project-tasks"+project.id+">"+task.content+"   "+"</br>"+"<a href='#!' class='secondary-content'>";
+            newHTML += "<span class='ultra-small right'>  " + task.deadline +"</span></a></label></li>";
        }
        $("#tasks").append(newHTML);
    },

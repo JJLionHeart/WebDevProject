@@ -74,7 +74,7 @@
             </div>
         </div>
           
-        <ul id=tasks class="collapsible" data-collapsible="accordion">
+        <ul id=tasks class="collection">
            
         </ul>
     </div>
