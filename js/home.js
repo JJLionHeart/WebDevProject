@@ -23,6 +23,9 @@ $(document).ready(function() {
 
 //Create tasks
 $("#modal1").click(function (){
+    $("#task-name").val("");
+    $("#task-deadline").val("");
+    $("#task-startdate").val("");
     $("#createTask").modal();
     $("#submit-task").show();
     $("#modify-task").hide();
@@ -53,10 +56,11 @@ $("#tasks").on("click",".collection-item", function(){
         console.log(taskId);
         if(taskId == task.id) {
             console.log("n");
-            $("#title-task").val("Modify Task");
+            
+            $("#title-task").text("Modify Task");
             $("#task-name").val(task.content);
             $("#task-deadline").val(task.deadline);
-            $("#task-startdate").val(task.start_date);
+            $("#task-startdate").val(task.startdate);
             $("#submit-task").hide();
             $("#modify-task").show();
             $('.modal').modal('open');
