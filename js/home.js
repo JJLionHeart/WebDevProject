@@ -40,8 +40,8 @@ $('.datepicker').pickadate({
 });
 
 $("#tasks").on("click",".collection-item", function(){
-    $("#createProject").modal();
-    $("#createProject").openModal();
+    $("#createTask").modal();
+    $('.modal').modal('open');
 });
 
 
