@@ -9,7 +9,7 @@ $(document).ready(function() {
             }
             },
             {
-            name: 'brush',
+            name: 'edit',
             callback: function (collectionItem, collection) {
                 addTask($(collectionItem));
             }
@@ -26,7 +26,13 @@ $(document).ready(function() {
             }
             },
             {
-            name: 'brush',
+            name: 'edit',
+            callback: function (collectionItem, collection) {
+                addTask($(collectionItem));
+            }
+        },
+        {
+            name: 'library_books',
             callback: function (collectionItem, collection) {
                 addTask($(collectionItem));
             }
@@ -86,8 +92,7 @@ $.ajax({
        for(var i = 0; i < data.NUM_ROWS; i++) {
             var task = jQuery.parseJSON(jsons[i]);
             newHTML += "<li id="+ task.id+ " class= 'collection-item' style='touch-action: pan-y;'>";
-            newHTML += "<input id=project-tasks"+task.id + " type='checkbox'> <label for=project-tasks"+task.id+">"+task.content+"</br>"+"<a href='#!' class='secondary-content'>";
-            newHTML += "<span style='color:red' class='ultra-small right' >  " + task.deadline +"</span></a></label></li>";
+            newHTML += "<input id=project-tasks"+task.id + " type='checkbox'> <label for=project-tasks"+task.id+">"+task.content+"</br>"+"</label></li>";
        }
        $("#tasks").append(newHTML);
    },
