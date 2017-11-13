@@ -145,7 +145,7 @@ function addTask(){
         },
         ContentType: "application/json",
         success: function(data) {
-            swal("Success!", "Task created!", "success");
+            Materialize.toast("Task created", 4000)
             //alert("Task created.");
             location.reload();
         },
